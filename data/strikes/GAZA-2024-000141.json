@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000141",
+  "date": "2024-03-06",
+  "time": "03:21",
+  "latitude": 31.375174632603613,
+  "longitude": 34.36374521224524,
+  "munition": "unknown",
+  "confidence": 0.40625935111547684,
+  "verification": "reported",
+  "facility_type": "unknown",
+  "destroyed_buildings": 0,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 7,
+  "description": "Reported strike in Maghazi area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

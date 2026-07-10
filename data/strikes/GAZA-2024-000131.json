@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000131",
+  "date": "2025-04-03",
+  "time": "16:00",
+  "latitude": 31.51552100693762,
+  "longitude": 34.439620712979064,
+  "munition": "artillery",
+  "confidence": 0.6874174515752849,
+  "verification": "reported",
+  "facility_type": "infrastructure",
+  "destroyed_buildings": 5,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 15,
+  "description": "Reported strike in Shejaiya area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

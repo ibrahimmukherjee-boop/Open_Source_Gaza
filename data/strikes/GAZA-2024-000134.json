@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000134",
+  "date": "2025-01-25",
+  "time": "11:53",
+  "latitude": 31.444352358583032,
+  "longitude": 34.379135301160794,
+  "munition": "artillery",
+  "confidence": 0.6833245764830285,
+  "verification": "reported",
+  "facility_type": "residential",
+  "destroyed_buildings": 4,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 16,
+  "description": "Reported strike in Nuseirat area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

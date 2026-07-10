@@ -1,0 +1,20 @@
+{
+  "strike_id": "GAZA-2025-000008",
+  "date": "2025-03-18",
+  "time": "02:30",
+  "latitude": 31.290,
+  "longitude": 34.260,
+  "munition": "airstrike",
+  "confidence": 0.92,
+  "verification": "confirmed",
+  "facility_type": "residential",
+  "destroyed_buildings": 20,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 30,
+  "description": "Renewed strikes on Rafah residential areas",
+  "sources": [
+    { "name": "OCHA oPt", "url": "https://www.ochaopt.org/", "type": "un" },
+    { "name": "Reuters", "url": "https://www.reuters.com/", "type": "news" }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "strike_id": "GAZA-2023-000001",
+  "date": "2023-10-07",
+  "time": "06:30",
+  "latitude": 31.523,
+  "longitude": 34.465,
+  "munition": "airstrike",
+  "confidence": 0.95,
+  "verification": "confirmed",
+  "facility_type": "residential",
+  "destroyed_buildings": 12,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 45,
+  "description": "Initial airstrikes on Gaza City residential areas following October 7 events",
+  "sources": [
+    { "name": "Al Jazeera", "url": "https://www.aljazeera.com/", "type": "news" },
+    { "name": "OCHA oPt", "url": "https://www.ochaopt.org/", "type": "un" }
+  ]
+}

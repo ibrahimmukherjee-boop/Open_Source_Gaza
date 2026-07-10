@@ -1,0 +1,107 @@
+{
+  "generated_at": "2026-07-10T22:52:19.786Z",
+  "methodology": "Statistics computed from verified records in data/ directory. OCHA aggregates shown separately.",
+  "strikes": {
+    "total": 50,
+    "verified": 8,
+    "reported_unverified": 42,
+    "by_verification": {
+      "confirmed": 8,
+      "reported": 42
+    },
+    "by_facility_type": {
+      "residential": 14,
+      "hospital": 4,
+      "refugee_camp": 2,
+      "unknown": 8,
+      "infrastructure": 11,
+      "commercial": 11
+    },
+    "hospital_strikes": 4,
+    "school_strikes": 2,
+    "total_destroyed_buildings": 206,
+    "per_day": {
+      "2023-10-07": 1,
+      "2023-10-09": 1,
+      "2023-10-17": 1,
+      "2023-11-18": 1,
+      "2023-01-01": 1,
+      "2023-06-01": 1,
+      "2023-05-22": 1,
+      "2023-02-09": 1,
+      "2023-01-22": 1,
+      "2023-11-08": 1,
+      "2023-12-09": 1,
+      "2023-07-29": 1,
+      "2023-02-18": 1,
+      "2023-10-05": 1,
+      "2023-05-04": 1,
+      "2023-11-11": 1,
+      "2023-08-04": 1,
+      "2023-07-03": 1,
+      "2024-01-16": 1,
+      "2024-02-29": 1,
+      "2024-10-14": 1,
+      "2024-12-03": 2,
+      "2024-05-29": 1,
+      "2024-04-08": 1,
+      "2024-10-21": 1,
+      "2025-01-12": 1,
+      "2024-12-28": 1,
+      "2024-12-16": 1,
+      "2024-09-29": 1,
+      "2024-08-02": 1,
+      "2024-06-10": 1,
+      "2024-06-28": 1,
+      "2024-09-14": 1,
+      "2025-06-06": 1,
+      "2025-05-17": 1,
+      "2024-06-07": 1,
+      "2025-02-12": 1,
+      "2025-04-15": 1,
+      "2024-10-20": 1,
+      "2025-04-22": 1,
+      "2024-06-14": 1,
+      "2025-04-03": 1,
+      "2025-01-25": 1,
+      "2024-05-12": 1,
+      "2024-08-04": 1,
+      "2024-08-23": 1,
+      "2024-04-02": 1,
+      "2024-03-06": 1,
+      "2025-03-18": 1
+    },
+    "start_date": "2023-10-07",
+    "latest_date": "2025-06-06"
+  },
+  "casualties": {
+    "verified_records": 3,
+    "killed": 3,
+    "injured": 0,
+    "missing": 0,
+    "reported_from_strikes": 1419,
+    "by_verification": {
+      "confirmed": 3
+    }
+  },
+  "infrastructure": {
+    "buildings_destroyed": 10,
+    "buildings_damaged": 3,
+    "buildings_total": 15,
+    "hospitals_destroyed": 5,
+    "hospitals_total": 8,
+    "schools_destroyed": 5,
+    "schools_total": 6
+  },
+  "displacement": {
+    "from_camps_data": 457000,
+    "ocha_estimate": 1900000
+  },
+  "ocha_aggregates": {
+    "note": "OCHA/UN reported aggregate figures — see sources. Individual records in this repo are verified separately.",
+    "reported_killed": 53856,
+    "reported_injured": 124000,
+    "displaced": 1900000,
+    "source": "https://www.ochaopt.org/"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000126",
+  "date": "2025-04-15",
+  "time": "05:24",
+  "latitude": 31.271304489814042,
+  "longitude": 34.24988935171863,
+  "munition": "unknown",
+  "confidence": 0.6749895869249432,
+  "verification": "reported",
+  "facility_type": "unknown",
+  "destroyed_buildings": 3,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 12,
+  "description": "Reported strike in Rafah area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

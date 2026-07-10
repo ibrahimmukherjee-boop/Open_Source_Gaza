@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000109",
+  "date": "2024-09-29",
+  "time": "22:30",
+  "latitude": 31.540060561105324,
+  "longitude": 34.49685140402992,
+  "munition": "airstrike",
+  "confidence": 0.4899063835504197,
+  "verification": "reported",
+  "facility_type": "infrastructure",
+  "destroyed_buildings": 6,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 18,
+  "description": "Reported strike in Jabalia area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

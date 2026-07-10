@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2023-000111",
+  "date": "2023-05-22",
+  "time": "08:00",
+  "latitude": 31.52440149785512,
+  "longitude": 34.45257766988018,
+  "munition": "artillery",
+  "confidence": 0.41122163036413095,
+  "verification": "reported",
+  "facility_type": "unknown",
+  "destroyed_buildings": 1,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 14,
+  "description": "Reported strike in Beach Camp area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "OpenStreetMap contributors",
+    "description": "Major roads in Gaza Strip",
+    "updated": "2025-07-01"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Salah al-Din Road", "type": "primary", "status": "damaged" },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[34.25, 31.28], [34.30, 31.32], [34.35, 31.36], [34.40, 31.40], [34.45, 31.44], [34.50, 31.48], [34.55, 31.52]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Coastal Road", "type": "primary", "status": "partially_damaged" },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[34.22, 31.52], [34.24, 31.48], [34.26, 31.44], [34.28, 31.40], [34.30, 31.36], [34.32, 31.32], [34.34, 31.28]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Omar Mukhtar Street", "type": "secondary", "status": "damaged" },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[34.44, 31.50], [34.46, 31.51], [34.47, 31.515], [34.475, 31.52]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Rashid Street", "type": "secondary", "status": "destroyed" },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[34.42, 31.505], [34.44, 31.508], [34.46, 31.512], [34.48, 31.515]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Netzarim Corridor", "type": "primary", "status": "blocked" },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[34.42, 31.42], [34.43, 31.44], [34.44, 31.46], [34.45, 31.48]]
+      }
+    }
+  ]
+}

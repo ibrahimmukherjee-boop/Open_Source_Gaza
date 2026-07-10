@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000100",
+  "date": "2024-12-03",
+  "time": "02:47",
+  "latitude": 31.278763103107053,
+  "longitude": 34.26115886430298,
+  "munition": "artillery",
+  "confidence": 0.6415509535283406,
+  "verification": "reported",
+  "facility_type": "commercial",
+  "destroyed_buildings": 5,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 19,
+  "description": "Reported strike in Rafah area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

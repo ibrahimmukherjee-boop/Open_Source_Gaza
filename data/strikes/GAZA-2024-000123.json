@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000123",
+  "date": "2025-02-12",
+  "time": "04:45",
+  "latitude": 31.407476734071338,
+  "longitude": 34.29187225653836,
+  "munition": "airstrike",
+  "confidence": 0.6581125373914911,
+  "verification": "reported",
+  "facility_type": "infrastructure",
+  "destroyed_buildings": 5,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 17,
+  "description": "Reported strike in Deir al-Balah area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

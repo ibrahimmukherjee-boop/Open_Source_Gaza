@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000116",
+  "date": "2024-09-14",
+  "time": "11:01",
+  "latitude": 31.54669834899904,
+  "longitude": 34.44969887405844,
+  "munition": "airstrike",
+  "confidence": 0.6880473048745195,
+  "verification": "reported",
+  "facility_type": "residential",
+  "destroyed_buildings": 5,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 13,
+  "description": "Reported strike in Beach Camp area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

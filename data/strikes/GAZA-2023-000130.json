@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2023-000130",
+  "date": "2023-10-05",
+  "time": "12:28",
+  "latitude": 31.526738901522965,
+  "longitude": 34.44124870172372,
+  "munition": "unknown",
+  "confidence": 0.5799826428447413,
+  "verification": "reported",
+  "facility_type": "commercial",
+  "destroyed_buildings": 1,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 14,
+  "description": "Reported strike in Shejaiya area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Map of Humanitarian Conflict — Gaza</title>
+  <meta name="description" content="Open-source 3D visualization of verified strikes, casualties, and infrastructure damage in Gaza since October 7, 2023.">
+  <link rel="stylesheet" href="frontend/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js"></script>
+  <link href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css" rel="stylesheet">
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="loader-content">
+      <div class="pulse-ring"></div>
+      <h2>Gaza Live Map</h2>
+      <p>Loading humanitarian data...</p>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <header id="header">
+    <div class="header-left">
+      <div class="logo">
+        <span class="logo-icon">◉</span>
+        <div>
+          <h1>Live Map of Humanitarian Conflict</h1>
+          <span class="subtitle">Gaza — Open Source Documentation</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-stats" id="header-stats">
+      <div class="stat-pill">
+        <span class="stat-label">Verified Strikes</span>
+        <span class="stat-value" id="stat-strikes">—</span>
+      </div>
+      <div class="stat-pill critical">
+        <span class="stat-label">Reported Killed</span>
+        <span class="stat-value" id="stat-killed">—</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Displaced</span>
+        <span class="stat-value" id="stat-displaced">—</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Buildings Destroyed</span>
+        <span class="stat-value" id="stat-buildings">—</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <a href="https://github.com/ibrahimmukherjee/Open_Source_Gaza" target="_blank" class="github-link">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.18.82.63-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.51-1.04 2.18-.82 2.18-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        Open Source
+      </a>
+    </div>
+  </header>
+
+  <div id="map"></div>
+
+  <div id="three-overlay"></div>
+
+  <aside id="sidebar">
+    <section class="panel">
+      <h3>Timeline</h3>
+      <div class="timeline-controls">
+        <input type="range" id="timeline-slider" min="0" max="100" value="100">
+        <div class="timeline-labels">
+          <span>Oct 2023</span>
+          <span id="timeline-date">Today</span>
+        </div>
+        <div class="timeline-buttons">
+          <button id="btn-play" class="btn-icon" title="Play timeline">▶</button>
+          <button id="btn-reset" class="btn-icon" title="Reset">↺</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Layers</h3>
+      <div class="layer-toggles">
+        <label class="toggle"><input type="checkbox" id="layer-strikes" checked><span class="toggle-dot strikes"></span> Strikes</label>
+        <label class="toggle"><input type="checkbox" id="layer-buildings" checked><span class="toggle-dot buildings"></span> Buildings</label>
+        <label class="toggle"><input type="checkbox" id="layer-hospitals" checked><span class="toggle-dot hospitals"></span> Hospitals</label>
+        <label class="toggle"><input type="checkbox" id="layer-schools" checked><span class="toggle-dot schools"></span> Schools</label>
+        <label class="toggle"><input type="checkbox" id="layer-camps" checked><span class="toggle-dot camps"></span> Refugee Camps</label>
+        <label class="toggle"><input type="checkbox" id="layer-roads"><span class="toggle-dot roads"></span> Roads</label>
+        <label class="toggle"><input type="checkbox" id="layer-3d" checked><span class="toggle-dot"></span> 3D View</label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Verification</h3>
+      <div class="legend">
+        <div class="legend-item"><span class="dot confirmed"></span> Confirmed</div>
+        <div class="legend-item"><span class="dot probable"></span> Probable</div>
+        <div class="legend-item"><span class="dot reported"></span> Reported</div>
+        <div class="legend-item"><span class="dot disputed"></span> Disputed</div>
+      </div>
+    </section>
+
+    <section class="panel" id="detail-panel" style="display:none">
+      <h3>Event Detail</h3>
+      <div id="detail-content"></div>
+    </section>
+  </aside>
+
+  <div id="disclaimer">
+    Data sourced from verified records in our <a href="https://github.com/ibrahimmukherjee/Open_Source_Gaza">open repository</a>.
+    Aggregate figures include OCHA/UN estimates. All records include confidence scores and source attribution.
+  </div>
+
+  <script src="frontend/js/app.js" type="module"></script>
+</body>
+</html>

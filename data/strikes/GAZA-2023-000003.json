@@ -1,0 +1,20 @@
+{
+  "strike_id": "GAZA-2023-000003",
+  "date": "2023-10-17",
+  "time": "01:45",
+  "latitude": 31.523,
+  "longitude": 34.465,
+  "munition": "airstrike",
+  "confidence": 0.95,
+  "verification": "confirmed",
+  "facility_type": "hospital",
+  "destroyed_buildings": 8,
+  "hospital_damage": true,
+  "school_damage": false,
+  "casualties_reported": 15,
+  "description": "Strike on Al-Shifa Hospital — repeated targeting of Gaza's largest medical facility",
+  "sources": [
+    { "name": "MSF", "url": "https://www.msf.org/", "type": "ngo" },
+    { "name": "Al Jazeera", "url": "https://www.aljazeera.com/", "type": "news" }
+  ]
+}

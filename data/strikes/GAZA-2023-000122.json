@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2023-000122",
+  "date": "2023-07-29",
+  "time": "18:28",
+  "latitude": 31.438911472578088,
+  "longitude": 34.3041021304521,
+  "munition": "unknown",
+  "confidence": 0.5108278832951155,
+  "verification": "reported",
+  "facility_type": "infrastructure",
+  "destroyed_buildings": 1,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 16,
+  "description": "Reported strike in Deir al-Balah area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

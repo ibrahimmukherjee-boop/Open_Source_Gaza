@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000124",
+  "date": "2024-12-03",
+  "time": "05:53",
+  "latitude": 31.557440694460954,
+  "longitude": 34.47012496435169,
+  "munition": "airstrike",
+  "confidence": 0.5188529063553303,
+  "verification": "reported",
+  "facility_type": "commercial",
+  "destroyed_buildings": 6,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 8,
+  "description": "Reported strike in Jabalia area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

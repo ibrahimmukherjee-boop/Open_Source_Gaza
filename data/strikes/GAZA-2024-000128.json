@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000128",
+  "date": "2025-04-22",
+  "time": "09:42",
+  "latitude": 31.441920359585275,
+  "longitude": 34.40693173929056,
+  "munition": "artillery",
+  "confidence": 0.41393616891987556,
+  "verification": "reported",
+  "facility_type": "commercial",
+  "destroyed_buildings": 7,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 12,
+  "description": "Reported strike in Nuseirat area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

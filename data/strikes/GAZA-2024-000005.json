@@ -1,0 +1,20 @@
+{
+  "strike_id": "GAZA-2024-000005",
+  "date": "2024-01-16",
+  "time": "04:00",
+  "latitude": 31.530,
+  "longitude": 34.480,
+  "munition": "airstrike",
+  "confidence": 0.94,
+  "verification": "confirmed",
+  "facility_type": "hospital",
+  "destroyed_buildings": 4,
+  "hospital_damage": true,
+  "school_damage": false,
+  "casualties_reported": 25,
+  "description": "Strike on Indonesian Hospital in northern Gaza",
+  "sources": [
+    { "name": "WHO", "url": "https://www.who.int/", "type": "hospital" },
+    { "name": "OCHA oPt", "url": "https://www.ochaopt.org/", "type": "un" }
+  ]
+}

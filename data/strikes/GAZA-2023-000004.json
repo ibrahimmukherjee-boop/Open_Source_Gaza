@@ -1,0 +1,21 @@
+{
+  "strike_id": "GAZA-2023-000004",
+  "date": "2023-11-18",
+  "time": "02:30",
+  "latitude": 31.538,
+  "longitude": 34.478,
+  "munition": "airstrike",
+  "confidence": 0.97,
+  "verification": "confirmed",
+  "facility_type": "refugee_camp",
+  "destroyed_buildings": 6,
+  "hospital_damage": false,
+  "school_damage": true,
+  "casualties_reported": 200,
+  "description": "Strike on Al-Fakhura School shelter in Jabalia refugee camp",
+  "sources": [
+    { "name": "UNRWA", "url": "https://www.unrwa.org/", "type": "un" },
+    { "name": "Reuters", "url": "https://www.reuters.com/", "type": "news" },
+    { "name": "Amnesty International", "url": "https://www.amnesty.org/", "type": "ngo" }
+  ]
+}

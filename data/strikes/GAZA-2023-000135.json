@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2023-000135",
+  "date": "2023-08-04",
+  "time": "07:09",
+  "latitude": 31.36188570724074,
+  "longitude": 34.368627766917804,
+  "munition": "airstrike",
+  "confidence": 0.5275552642395549,
+  "verification": "reported",
+  "facility_type": "unknown",
+  "destroyed_buildings": 1,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 7,
+  "description": "Reported strike in Maghazi area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "casualty_id": "CAS-2023-000002",
+  "name": "Aggregated — Al-Fakhura School shelter",
+  "age": null,
+  "gender": "unknown",
+  "date": "2023-11-18",
+  "latitude": 31.538,
+  "longitude": 34.478,
+  "location_name": "Al-Fakhura School, Jabalia Camp",
+  "associated_strike": "GAZA-2023-000004",
+  "verification": "confirmed",
+  "confidence": 0.97,
+  "status": "killed",
+  "sources": [
+    { "name": "UNRWA", "url": "https://www.unrwa.org/" },
+    { "name": "Amnesty International", "url": "https://www.amnesty.org/" }
+  ]
+}

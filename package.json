@@ -1,0 +1,18 @@
+{
+  "name": "gaza-live-map",
+  "version": "1.0.0",
+  "description": "Open-source live 3D map of humanitarian conflict in Gaza",
+  "scripts": {
+    "validate": "node scripts/validate-data.js",
+    "stats": "node scripts/generate-statistics.js",
+    "seed": "node scripts/seed-reported-strikes.js",
+    "build": "node scripts/generate-statistics.js",
+    "serve": "npx serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ibrahimmukherjee/Open_Source_Gaza.git"
+  },
+  "license": "MIT",
+  "author": "Ibrahim Mukherjee"
+}

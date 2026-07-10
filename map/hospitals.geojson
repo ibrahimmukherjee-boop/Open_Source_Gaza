@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "OpenStreetMap + WHO + OCHA",
+    "description": "Hospitals and health facilities in Gaza Strip",
+    "updated": "2025-07-01"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Al-Shifa Hospital", "type": "hospital", "status": "destroyed", "beds": 700, "operational": false },
+      "geometry": { "type": "Point", "coordinates": [34.465, 31.523] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Indonesian Hospital", "type": "hospital", "status": "destroyed", "beds": 200, "operational": false },
+      "geometry": { "type": "Point", "coordinates": [34.480, 31.535] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Kamal Adwan Hospital", "type": "hospital", "status": "destroyed", "beds": 150, "operational": false },
+      "geometry": { "type": "Point", "coordinates": [34.475, 31.540] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Nasser Hospital", "type": "hospital", "status": "partially_operational", "beds": 350, "operational": true },
+      "geometry": { "type": "Point", "coordinates": [34.310, 31.340] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "European Gaza Hospital", "type": "hospital", "status": "damaged", "beds": 250, "operational": false },
+      "geometry": { "type": "Point", "coordinates": [34.330, 31.370] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Al-Aqsa Martyrs Hospital", "type": "hospital", "status": "partially_operational", "beds": 200, "operational": true },
+      "geometry": { "type": "Point", "coordinates": [34.300, 31.420] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Al-Awda Hospital", "type": "hospital", "status": "destroyed", "beds": 100, "operational": false },
+      "geometry": { "type": "Point", "coordinates": [34.290, 31.530] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Al-Rantisi Children's Hospital", "type": "hospital", "status": "destroyed", "beds": 80, "operational": false },
+      "geometry": { "type": "Point", "coordinates": [34.462, 31.520] }
+    }
+  ]
+}

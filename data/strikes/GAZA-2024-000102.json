@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000102",
+  "date": "2024-05-29",
+  "time": "19:21",
+  "latitude": 31.439761037632092,
+  "longitude": 34.387325568370514,
+  "munition": "unknown",
+  "confidence": 0.5571398744481091,
+  "verification": "reported",
+  "facility_type": "unknown",
+  "destroyed_buildings": 7,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 12,
+  "description": "Reported strike in Bureij area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

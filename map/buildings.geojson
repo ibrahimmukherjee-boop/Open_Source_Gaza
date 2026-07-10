@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "OpenStreetMap + Microsoft Building Footprints",
+    "description": "Building footprints in Gaza Strip",
+    "updated": "2025-07-01"
+  },
+  "features": [
+    { "type": "Feature", "properties": { "id": "BLD-001", "type": "residential", "status": "destroyed", "floors": 4 }, "geometry": { "type": "Polygon", "coordinates": [[[34.468, 31.518], [34.469, 31.518], [34.469, 31.519], [34.468, 31.519], [34.468, 31.518]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-002", "type": "residential", "status": "destroyed", "floors": 3 }, "geometry": { "type": "Polygon", "coordinates": [[[34.470, 31.516], [34.471, 31.516], [34.471, 31.517], [34.470, 31.517], [34.470, 31.516]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-003", "type": "commercial", "status": "damaged", "floors": 2 }, "geometry": { "type": "Polygon", "coordinates": [[[34.465, 31.514], [34.466, 31.514], [34.466, 31.515], [34.465, 31.515], [34.465, 31.514]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-004", "type": "residential", "status": "intact", "floors": 5 }, "geometry": { "type": "Polygon", "coordinates": [[[34.472, 31.520], [34.473, 31.520], [34.473, 31.521], [34.472, 31.521], [34.472, 31.520]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-005", "type": "residential", "status": "destroyed", "floors": 6 }, "geometry": { "type": "Polygon", "coordinates": [[[34.455, 31.508], [34.456, 31.508], [34.456, 31.509], [34.455, 31.509], [34.455, 31.508]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-006", "type": "mosque", "status": "damaged", "floors": 1 }, "geometry": { "type": "Polygon", "coordinates": [[[34.460, 31.512], [34.461, 31.512], [34.461, 31.513], [34.460, 31.513], [34.460, 31.512]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-007", "type": "residential", "status": "destroyed", "floors": 4 }, "geometry": { "type": "Polygon", "coordinates": [[[34.350, 31.380], [34.351, 31.380], [34.351, 31.381], [34.350, 31.381], [34.350, 31.380]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-008", "type": "residential", "status": "destroyed", "floors": 3 }, "geometry": { "type": "Polygon", "coordinates": [[[34.280, 31.340], [34.281, 31.340], [34.281, 31.341], [34.280, 31.341], [34.280, 31.340]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-009", "type": "school", "status": "destroyed", "floors": 2 }, "geometry": { "type": "Polygon", "coordinates": [[[34.440, 31.505], [34.442, 31.505], [34.442, 31.507], [34.440, 31.507], [34.440, 31.505]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-010", "type": "residential", "status": "damaged", "floors": 4 }, "geometry": { "type": "Polygon", "coordinates": [[[34.320, 31.420], [34.321, 31.420], [34.321, 31.421], [34.320, 31.421], [34.320, 31.420]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-011", "type": "residential", "status": "destroyed", "floors": 5 }, "geometry": { "type": "Polygon", "coordinates": [[[34.480, 31.525], [34.481, 31.525], [34.481, 31.526], [34.480, 31.526], [34.480, 31.525]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-012", "type": "residential", "status": "destroyed", "floors": 3 }, "geometry": { "type": "Polygon", "coordinates": [[[34.290, 31.310], [34.291, 31.310], [34.291, 31.311], [34.290, 31.311], [34.290, 31.310]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-013", "type": "commercial", "status": "destroyed", "floors": 2 }, "geometry": { "type": "Polygon", "coordinates": [[[34.460, 31.510], [34.461, 31.510], [34.461, 31.511], [34.460, 31.511], [34.460, 31.510]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-014", "type": "residential", "status": "intact", "floors": 3 }, "geometry": { "type": "Polygon", "coordinates": [[[34.475, 31.522], [34.476, 31.522], [34.476, 31.523], [34.475, 31.523], [34.475, 31.522]]] } },
+    { "type": "Feature", "properties": { "id": "BLD-015", "type": "residential", "status": "destroyed", "floors": 4 }, "geometry": { "type": "Polygon", "coordinates": [[[34.370, 31.400], [34.371, 31.400], [34.371, 31.401], [34.370, 31.401], [34.370, 31.400]]] } }
+  ]
+}

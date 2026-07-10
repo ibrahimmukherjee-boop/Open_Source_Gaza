@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000129",
+  "date": "2024-06-14",
+  "time": "15:23",
+  "latitude": 31.34045722140887,
+  "longitude": 34.308111293678905,
+  "munition": "unknown",
+  "confidence": 0.40045450135710364,
+  "verification": "reported",
+  "facility_type": "commercial",
+  "destroyed_buildings": 5,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 9,
+  "description": "Reported strike in Khan Younis area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

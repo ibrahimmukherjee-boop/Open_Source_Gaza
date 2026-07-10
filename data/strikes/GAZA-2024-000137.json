@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000137",
+  "date": "2024-08-04",
+  "time": "15:29",
+  "latitude": 31.377795068109148,
+  "longitude": 34.33655262537478,
+  "munition": "artillery",
+  "confidence": 0.6813399182042332,
+  "verification": "reported",
+  "facility_type": "unknown",
+  "destroyed_buildings": 5,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 18,
+  "description": "Reported strike in Maghazi area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

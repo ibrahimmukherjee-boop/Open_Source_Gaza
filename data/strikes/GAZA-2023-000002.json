@@ -1,0 +1,21 @@
+{
+  "strike_id": "GAZA-2023-000002",
+  "date": "2023-10-09",
+  "time": "22:00",
+  "latitude": 31.520,
+  "longitude": 34.462,
+  "munition": "airstrike",
+  "confidence": 0.98,
+  "verification": "confirmed",
+  "facility_type": "hospital",
+  "destroyed_buildings": 3,
+  "hospital_damage": true,
+  "school_damage": false,
+  "casualties_reported": 500,
+  "description": "Strike on Al-Ahli Arab Hospital courtyard — one of the deadliest single incidents",
+  "sources": [
+    { "name": "WHO", "url": "https://www.who.int/", "type": "hospital" },
+    { "name": "BBC", "url": "https://www.bbc.com/", "type": "news" },
+    { "name": "OCHA oPt", "url": "https://www.ochaopt.org/", "type": "un" }
+  ]
+}

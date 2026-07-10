@@ -1,0 +1,19 @@
+{
+  "casualty_id": "CAS-2023-000001",
+  "name": "Aggregated — Al-Ahli Hospital incident",
+  "age": null,
+  "gender": "unknown",
+  "date": "2023-10-09",
+  "latitude": 31.520,
+  "longitude": 34.462,
+  "location_name": "Al-Ahli Arab Hospital, Gaza City",
+  "hospital": "Al-Ahli Arab Hospital",
+  "associated_strike": "GAZA-2023-000002",
+  "verification": "confirmed",
+  "confidence": 0.95,
+  "status": "killed",
+  "sources": [
+    { "name": "WHO", "url": "https://www.who.int/" },
+    { "name": "OCHA oPt", "url": "https://www.ochaopt.org/" }
+  ]
+}

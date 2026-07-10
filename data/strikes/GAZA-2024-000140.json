@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000140",
+  "date": "2024-04-02",
+  "time": "23:47",
+  "latitude": 31.435010470528894,
+  "longitude": 34.314988221913325,
+  "munition": "airstrike",
+  "confidence": 0.6827150728692035,
+  "verification": "reported",
+  "facility_type": "residential",
+  "destroyed_buildings": 6,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 19,
+  "description": "Reported strike in Deir al-Balah area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

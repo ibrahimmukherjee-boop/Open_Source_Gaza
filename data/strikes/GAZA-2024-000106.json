@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000106",
+  "date": "2025-01-12",
+  "time": "15:47",
+  "latitude": 31.51719454896742,
+  "longitude": 34.456778917578625,
+  "munition": "unknown",
+  "confidence": 0.4286341964334755,
+  "verification": "reported",
+  "facility_type": "infrastructure",
+  "destroyed_buildings": 0,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 18,
+  "description": "Reported strike in Beach Camp area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "OpenStreetMap + UNRWA + OCHA",
+    "description": "Schools in Gaza Strip",
+    "updated": "2025-07-01"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "UNRWA Beach Elementary Co-Ed B", "type": "school", "status": "destroyed", "students": 800 },
+      "geometry": { "type": "Point", "coordinates": [34.455, 31.510] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Al-Fakhura School", "type": "school", "status": "destroyed", "students": 1200, "used_as_shelter": true },
+      "geometry": { "type": "Point", "coordinates": [34.478, 31.538] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Al-Sardi School", "type": "school", "status": "destroyed", "students": 600, "used_as_shelter": true },
+      "geometry": { "type": "Point", "coordinates": [34.441, 31.506] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "UNRWA Preparatory Boys A", "type": "school", "status": "damaged", "students": 500 },
+      "geometry": { "type": "Point", "coordinates": [34.350, 31.380] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Tal Al-Zaatar School", "type": "school", "status": "destroyed", "students": 900, "used_as_shelter": true },
+      "geometry": { "type": "Point", "coordinates": [34.470, 31.530] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Al-Furqan School", "type": "school", "status": "destroyed", "students": 700 },
+      "geometry": { "type": "Point", "coordinates": [34.320, 31.420] }
+    }
+  ]
+}

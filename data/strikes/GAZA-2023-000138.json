@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2023-000138",
+  "date": "2023-07-03",
+  "time": "21:11",
+  "latitude": 31.286245211178603,
+  "longitude": 34.25097312008613,
+  "munition": "artillery",
+  "confidence": 0.47253619803682456,
+  "verification": "reported",
+  "facility_type": "commercial",
+  "destroyed_buildings": 3,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 8,
+  "description": "Reported strike in Rafah area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "casualty_id": "CAS-2024-000003",
+  "name": "Aggregated — Flour massacre",
+  "age": null,
+  "gender": "unknown",
+  "date": "2024-02-29",
+  "latitude": 31.506,
+  "longitude": 34.441,
+  "location_name": "Nabulsi Roundabout, Gaza City",
+  "associated_strike": "GAZA-2024-000006",
+  "verification": "confirmed",
+  "confidence": 0.96,
+  "status": "killed",
+  "sources": [
+    { "name": "Human Rights Watch", "url": "https://www.hrw.org/" },
+    { "name": "OCHA oPt", "url": "https://www.ochaopt.org/" }
+  ]
+}

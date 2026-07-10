@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000121",
+  "date": "2024-06-07",
+  "time": "22:18",
+  "latitude": 31.52179474443676,
+  "longitude": 34.4710664063736,
+  "munition": "unknown",
+  "confidence": 0.45869451710888187,
+  "verification": "reported",
+  "facility_type": "commercial",
+  "destroyed_buildings": 3,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 11,
+  "description": "Reported strike in Jabalia area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

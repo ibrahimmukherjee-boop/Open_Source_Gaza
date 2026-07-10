@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000105",
+  "date": "2024-10-21",
+  "time": "07:14",
+  "latitude": 31.38786012161205,
+  "longitude": 34.34313481259943,
+  "munition": "airstrike",
+  "confidence": 0.5155411607583765,
+  "verification": "reported",
+  "facility_type": "infrastructure",
+  "destroyed_buildings": 5,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 4,
+  "description": "Reported strike in Maghazi area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "strike_id": "GAZA-2024-000006",
+  "date": "2024-02-29",
+  "time": "04:45",
+  "latitude": 31.506,
+  "longitude": 34.441,
+  "munition": "airstrike",
+  "confidence": 0.96,
+  "verification": "confirmed",
+  "facility_type": "refugee_camp",
+  "destroyed_buildings": 5,
+  "hospital_damage": false,
+  "school_damage": true,
+  "casualties_reported": 100,
+  "description": "Flour massacre — strike on crowd awaiting humanitarian aid in Gaza City",
+  "sources": [
+    { "name": "OCHA oPt", "url": "https://www.ochaopt.org/", "type": "un" },
+    { "name": "Human Rights Watch", "url": "https://www.hrw.org/", "type": "ngo" },
+    { "name": "AP News", "url": "https://apnews.com/", "type": "news" }
+  ]
+}

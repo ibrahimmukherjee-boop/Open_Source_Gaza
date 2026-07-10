@@ -1,0 +1,40 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "UNRWA + OCHA",
+    "description": "Refugee camps in Gaza Strip",
+    "updated": "2025-07-01"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Jabalia Camp", "population": 116000, "status": "severely_damaged", "displaced": 95000 },
+      "geometry": { "type": "Point", "coordinates": [34.480, 31.530] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Beach Camp (Shati)", "population": 87000, "status": "severely_damaged", "displaced": 80000 },
+      "geometry": { "type": "Point", "coordinates": [34.440, 31.530] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Bureij Camp", "population": 28000, "status": "damaged", "displaced": 22000 },
+      "geometry": { "type": "Point", "coordinates": [34.400, 31.440] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Nuseirat Camp", "population": 80000, "status": "damaged", "displaced": 65000 },
+      "geometry": { "type": "Point", "coordinates": [34.390, 31.450] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Khan Younis Camp", "population": 87000, "status": "severely_damaged", "displaced": 75000 },
+      "geometry": { "type": "Point", "coordinates": [34.300, 31.340] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Rafah Camp", "population": 125000, "status": "destroyed", "displaced": 120000 },
+      "geometry": { "type": "Point", "coordinates": [34.260, 31.290] }
+    }
+  ]
+}

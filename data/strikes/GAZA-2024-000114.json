@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000114",
+  "date": "2024-06-10",
+  "time": "06:36",
+  "latitude": 31.43251459500886,
+  "longitude": 34.372076194403995,
+  "munition": "airstrike",
+  "confidence": 0.5672961575264174,
+  "verification": "reported",
+  "facility_type": "commercial",
+  "destroyed_buildings": 6,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 0,
+  "description": "Reported strike in Nuseirat area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

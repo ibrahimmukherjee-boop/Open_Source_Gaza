@@ -1,0 +1,75 @@
+[
+  {
+    "casualty_id": "CAS-2023-000001",
+    "name": "Aggregated — Al-Ahli Hospital incident",
+    "age": null,
+    "gender": "unknown",
+    "date": "2023-10-09",
+    "latitude": 31.52,
+    "longitude": 34.462,
+    "location_name": "Al-Ahli Arab Hospital, Gaza City",
+    "hospital": "Al-Ahli Arab Hospital",
+    "associated_strike": "GAZA-2023-000002",
+    "verification": "confirmed",
+    "confidence": 0.95,
+    "status": "killed",
+    "sources": [
+      {
+        "name": "WHO",
+        "url": "https://www.who.int/"
+      },
+      {
+        "name": "OCHA oPt",
+        "url": "https://www.ochaopt.org/"
+      }
+    ]
+  },
+  {
+    "casualty_id": "CAS-2023-000002",
+    "name": "Aggregated — Al-Fakhura School shelter",
+    "age": null,
+    "gender": "unknown",
+    "date": "2023-11-18",
+    "latitude": 31.538,
+    "longitude": 34.478,
+    "location_name": "Al-Fakhura School, Jabalia Camp",
+    "associated_strike": "GAZA-2023-000004",
+    "verification": "confirmed",
+    "confidence": 0.97,
+    "status": "killed",
+    "sources": [
+      {
+        "name": "UNRWA",
+        "url": "https://www.unrwa.org/"
+      },
+      {
+        "name": "Amnesty International",
+        "url": "https://www.amnesty.org/"
+      }
+    ]
+  },
+  {
+    "casualty_id": "CAS-2024-000003",
+    "name": "Aggregated — Flour massacre",
+    "age": null,
+    "gender": "unknown",
+    "date": "2024-02-29",
+    "latitude": 31.506,
+    "longitude": 34.441,
+    "location_name": "Nabulsi Roundabout, Gaza City",
+    "associated_strike": "GAZA-2024-000006",
+    "verification": "confirmed",
+    "confidence": 0.96,
+    "status": "killed",
+    "sources": [
+      {
+        "name": "Human Rights Watch",
+        "url": "https://www.hrw.org/"
+      },
+      {
+        "name": "OCHA oPt",
+        "url": "https://www.ochaopt.org/"
+      }
+    ]
+  }
+]

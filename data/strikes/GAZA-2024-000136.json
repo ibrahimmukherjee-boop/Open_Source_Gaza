@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000136",
+  "date": "2024-05-12",
+  "time": "04:09",
+  "latitude": 31.32647050955198,
+  "longitude": 34.30224388268411,
+  "munition": "artillery",
+  "confidence": 0.48156142275500946,
+  "verification": "reported",
+  "facility_type": "infrastructure",
+  "destroyed_buildings": 0,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 2,
+  "description": "Reported strike in Khan Younis area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

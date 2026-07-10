@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2024-000110",
+  "date": "2024-08-02",
+  "time": "03:30",
+  "latitude": 31.53019147225121,
+  "longitude": 34.476428551165995,
+  "munition": "airstrike",
+  "confidence": 0.46122051073290815,
+  "verification": "reported",
+  "facility_type": "infrastructure",
+  "destroyed_buildings": 5,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 14,
+  "description": "Reported strike in Gaza City area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

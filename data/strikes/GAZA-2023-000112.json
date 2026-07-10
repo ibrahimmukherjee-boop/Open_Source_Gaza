@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2023-000112",
+  "date": "2023-02-09",
+  "time": "10:59",
+  "latitude": 31.434668500575253,
+  "longitude": 34.38617755660914,
+  "munition": "unknown",
+  "confidence": 0.41379072662402283,
+  "verification": "reported",
+  "facility_type": "infrastructure",
+  "destroyed_buildings": 0,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 13,
+  "description": "Reported strike in Nuseirat area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

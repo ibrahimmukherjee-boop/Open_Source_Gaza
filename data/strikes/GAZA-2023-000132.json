@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2023-000132",
+  "date": "2023-05-04",
+  "time": "16:36",
+  "latitude": 31.507390889039367,
+  "longitude": 34.46193867172608,
+  "munition": "unknown",
+  "confidence": 0.6789828339631063,
+  "verification": "reported",
+  "facility_type": "residential",
+  "destroyed_buildings": 1,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 4,
+  "description": "Reported strike in Gaza City area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}

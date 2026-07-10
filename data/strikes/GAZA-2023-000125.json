@@ -1,0 +1,23 @@
+{
+  "strike_id": "GAZA-2023-000125",
+  "date": "2023-02-18",
+  "time": "11:20",
+  "latitude": 31.294491642449632,
+  "longitude": 34.241093052907644,
+  "munition": "unknown",
+  "confidence": 0.4336582158177439,
+  "verification": "reported",
+  "facility_type": "unknown",
+  "destroyed_buildings": 6,
+  "hospital_damage": false,
+  "school_damage": false,
+  "casualties_reported": 12,
+  "description": "Reported strike in Rafah area — pending verification",
+  "sources": [
+    {
+      "name": "OCHA oPt Daily Report",
+      "url": "https://www.ochaopt.org/",
+      "type": "un"
+    }
+  ]
+}
