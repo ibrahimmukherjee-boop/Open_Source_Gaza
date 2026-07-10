@@ -329,6 +329,39 @@ body {
   font-size: 0.8rem;
 }
 
+.explanation-text {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.explanation-text p {
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.explanation-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+.explanation-text li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 0;
+  font-size: 0.75rem;
+}
+
+.explanation-text strong {
+  color: var(--text-primary);
+}
+
+#disclaimer strong {
+  color: var(--accent-red);
+}
+
 .dot {
   width: 10px;
   height: 10px;

@@ -33,6 +33,7 @@ const requiredFiles = [
   'data/aggregates/ocha-snapshot-2026-02.json',
   'map/buildings.geojson',
   'map/rubble.geojson',
+  'map/devastation_overlay.geojson',
   'map/damage_zones.geojson',
   'map/buffer_zones.geojson',
   'map/restricted_areas.geojson',
@@ -112,10 +113,17 @@ if (buildings.metadata.official_structures_damaged === unosat.totals.structures_
   warn('Building grid metadata does not match UNOSAT totals');
 }
 
-if (buildings.features.length >= 1000) {
-  pass(`Building grid has ${buildings.features.length} visual sample cells`);
+if (buildings.features.length >= 5000) {
+  pass(`Building grid has ${buildings.features.length} full-coverage cells`);
 } else {
-  warn(`Building grid only has ${buildings.features.length} cells — may look sparse`);
+  warn(`Building grid has ${buildings.features.length} cells — expected 5000+ for full coverage`);
+}
+
+const rubblePct = buildings.features.filter(f => f.properties.status !== 'intact').length / buildings.features.length;
+if (rubblePct >= 0.75) {
+  pass(`Grid rubble coverage ${(rubblePct * 100).toFixed(1)}% matches UNOSAT ~81% damaged`);
+} else {
+  warn(`Grid rubble coverage only ${(rubblePct * 100).toFixed(1)}% — may not match satellite imagery`);
 }
 
 // Strike records audit

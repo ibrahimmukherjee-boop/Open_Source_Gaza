@@ -94,8 +94,35 @@
       </div>
     </section>
 
+    <section class="panel" id="rubble-explanation">
+      <h3>Why Google Maps Shows Rubble</h3>
+      <div class="explanation-text">
+        <p><strong>81% of all structures are damaged</strong> per UNOSAT satellite analysis (Oct 2025) — this matches what you see on Google Maps and Maxar satellite imagery.</p>
+        <p>The map does <strong>not</strong> mean undamaged areas were "never bombed." UNOSAT classifies damage in tiers:</p>
+        <ul>
+          <li><span class="dot destroyed"></span> <strong>Destroyed</strong> — 50% (123,464) — total rubble</li>
+          <li><span class="dot probable"></span> <strong>Severely damaged</strong> — 7% — visible rubble</li>
+          <li><span class="dot reported"></span> <strong>Moderately damaged</strong> — 14% — appears damaged on satellite</li>
+          <li><span class="dot disputed"></span> <strong>Possibly damaged</strong> — 10%</li>
+          <li><span class="dot" style="background:#2d6a4f"></span> <strong>Intact</strong> — only 19% — no detectable damage on satellite</li>
+        </ul>
+        <p>Base layer uses <strong>real satellite imagery</strong> (Esri/Maxar). Brown/red overlay = UNOSAT-confirmed destruction.</p>
+      </div>
+    </section>
+
     <section class="panel">
-      <h3>Verification</h3>
+      <h3>Damage Legend</h3>
+      <div class="legend">
+        <div class="legend-item"><span class="dot destroyed"></span> Destroyed / Rubble (50%)</div>
+        <div class="legend-item"><span class="dot probable"></span> Severely damaged (7%)</div>
+        <div class="legend-item"><span class="dot reported"></span> Moderately damaged (14%)</div>
+        <div class="legend-item"><span class="dot disputed"></span> Possibly damaged (10%)</div>
+        <div class="legend-item"><span class="dot" style="background:#2d6a4f"></span> Intact — not "unbombed" (19%)</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Strike Verification</h3>
       <div class="legend">
         <div class="legend-item"><span class="dot confirmed"></span> Confirmed</div>
         <div class="legend-item"><span class="dot probable"></span> Probable</div>
@@ -111,8 +138,7 @@
   </aside>
 
   <div id="disclaimer">
-    Data from UNOSAT satellite assessment (Oct 2025): 81% of structures damaged, 123,464 destroyed.
-    See our <a href="https://github.com/ibrahimmukherjee-boop/Open_Source_Gaza">open repository</a> for sources and methodology.
+    Satellite imagery base (Esri/Maxar) shows the rubble you see on Google Maps. UNOSAT: 81% structures damaged, 123,464 destroyed. <strong>Intact ≠ unbombed</strong> — see sidebar.
   </div>
 
   <script src="frontend/js/app.js" type="module"></script>

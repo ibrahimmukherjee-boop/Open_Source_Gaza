@@ -26,7 +26,8 @@ async function loadData() {
     fetch('map/rubble.geojson').then(r => r.json()),
     fetch('map/damage_zones.geojson').then(r => r.json()),
     fetch('map/buffer_zones.geojson').then(r => r.json()),
-    fetch('map/restricted_areas.geojson').then(r => r.json())
+    fetch('map/restricted_areas.geojson').then(r => r.json()),
+    fetch('map/devastation_overlay.geojson').then(r => r.json())
   ]);
 
   const strikeDetails = await Promise.all(
@@ -37,7 +38,7 @@ async function loadData() {
     )
   );
 
-  return { strikes, strikeDetails, stats, buildings, hospitals, schools, camps, roads, rubble, damageZones, bufferZones, restrictedAreas };
+  return { strikes, strikeDetails, stats, buildings, hospitals, schools, camps, roads, rubble, damageZones, bufferZones, restrictedAreas, devastationOverlay };
 }
 
 function formatNumber(n) {
@@ -89,28 +90,45 @@ function strikesToGeoJSON(strikes) {
   };
 }
 
-function initMap(buildings, hospitals, schools, camps, roads, rubble, damageZones, bufferZones, restrictedAreas, strikes) {
+function initMap(buildings, hospitals, schools, camps, roads, rubble, damageZones, bufferZones, restrictedAreas, devastationOverlay, strikes) {
   map = new maplibregl.Map({
     container: 'map',
     style: {
       version: 8,
       sources: {
-        'osm-tiles': {
+        'satellite': {
           type: 'raster',
-          tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+          tiles: [
+            'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+          ],
           tileSize: 256,
-          attribution: '&copy; OpenStreetMap contributors'
+          attribution: 'Esri, Maxar, Earthstar Geographics'
+        },
+        'labels': {
+          type: 'raster',
+          tiles: [
+            'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}'
+          ],
+          tileSize: 256
         }
       },
-      layers: [{
-        id: 'osm',
-        type: 'raster',
-        source: 'osm-tiles',
-        paint: { 'raster-opacity': 0.7, 'raster-brightness-min': 0.1, 'raster-saturation': -0.6 }
-      }]
+      layers: [
+        {
+          id: 'satellite-base',
+          type: 'raster',
+          source: 'satellite',
+          paint: { 'raster-opacity': 1, 'raster-brightness-min': 0.05, 'raster-contrast': 0.15 }
+        },
+        {
+          id: 'labels',
+          type: 'raster',
+          source: 'labels',
+          paint: { 'raster-opacity': 0.4 }
+        }
+      ]
     },
     center: [34.40, 31.42],
-    zoom: 10.5,
+    zoom: 11,
     pitch: 55,
     bearing: -15,
     maxBounds: [[34.15, 31.15], [34.65, 31.65]]
@@ -119,11 +137,12 @@ function initMap(buildings, hospitals, schools, camps, roads, rubble, damageZone
   map.addControl(new maplibregl.NavigationControl(), 'bottom-left');
 
   map.on('load', () => {
+    addDevastationOverlay(devastationOverlay);
     addRestrictedLayer(restrictedAreas);
     addBufferLayer(bufferZones);
     addDamageZoneLayer(damageZones);
-    addBuildingLayer(buildings);
     addRubbleLayer(rubble);
+    addBuildingLayer(buildings);
     addPointLayer('hospitals', hospitals, '#4ea8de', 'cross');
     addPointLayer('schools', schools, '#ffd166', 'school');
     addPointLayer('camps', camps, '#9b5de5', 'camp');
@@ -139,6 +158,24 @@ function initMap(buildings, hospitals, schools, camps, roads, rubble, damageZone
 
   map.on('mouseenter', 'strikes-layer', () => map.getCanvas().style.cursor = 'pointer');
   map.on('mouseleave', 'strikes-layer', () => map.getCanvas().style.cursor = '');
+}
+
+function addDevastationOverlay(overlay) {
+  map.addSource('devastation', { type: 'geojson', data: overlay });
+  map.addLayer({
+    id: 'devastation-overlay',
+    type: 'fill',
+    source: 'devastation',
+    paint: {
+      'fill-color': [
+        'interpolate', ['linear'], ['get', 'damage_percent'],
+        70, '#8b4513',
+        80, '#8b2020',
+        90, '#660000'
+      ],
+      'fill-opacity': 0.35
+    }
+  });
 }
 
 function addBufferLayer(zones) {
@@ -254,9 +291,16 @@ function addRubbleLayer(rubble) {
     type: 'fill',
     source: 'rubble',
     paint: {
-      'fill-color': '#8b4513',
-      'fill-opacity': 0.55,
-      'fill-outline-color': '#ff3b3b'
+      'fill-color': [
+        'match', ['get', 'damage_tier'],
+        'destroyed', '#3d0c0c',
+        'severely_damaged', '#5c1a1a',
+        'moderately_damaged', '#7a2e2e',
+        'possibly_damaged', '#8b4513',
+        '#8b4513'
+      ],
+      'fill-opacity': 0.72,
+      'fill-outline-color': '#ff2200'
     }
   });
 }
@@ -268,24 +312,39 @@ function addBuildingLayer(buildings) {
     id: 'buildings-3d',
     type: 'fill-extrusion',
     source: 'buildings',
+    filter: ['!=', ['get', 'status'], 'intact'],
     paint: {
       'fill-extrusion-color': [
         'match', ['get', 'status'],
-        'destroyed', '#ff3b3b',
-        'severely_damaged', '#cc2200',
-        'moderately_damaged', '#ff8c42',
-        'damaged', '#ffd166',
-        'intact', '#4a5568',
-        '#666666'
+        'destroyed', '#ff2200',
+        'severely_damaged', '#cc1100',
+        'moderately_damaged', '#ff6633',
+        'possibly_damaged', '#ff9944',
+        '#8b4513'
       ],
       'fill-extrusion-height': [
-        'case',
-        ['==', ['get', 'status'], 'destroyed'], 0.3,
-        ['==', ['get', 'status'], 'severely_damaged'], 1,
-        ['*', ['get', 'floors'], 3.5]
+        'match', ['get', 'status'],
+        'destroyed', 0.2,
+        'severely_damaged', 0.5,
+        'moderately_damaged', 1,
+        'possibly_damaged', 1.5,
+        2
       ],
       'fill-extrusion-base': 0,
-      'fill-extrusion-opacity': 0.9
+      'fill-extrusion-opacity': 0.85
+    }
+  });
+
+  // Intact structures — rare (~19%), shown small and green
+  map.addLayer({
+    id: 'buildings-intact',
+    type: 'fill-extrusion',
+    source: 'buildings',
+    filter: ['==', ['get', 'status'], 'intact'],
+    paint: {
+      'fill-extrusion-color': '#2d6a4f',
+      'fill-extrusion-height': ['*', ['get', 'floors'], 3],
+      'fill-extrusion-opacity': 0.6
     }
   });
 }
@@ -551,8 +610,8 @@ function setupControls() {
 
   const layerMap = {
     'layer-strikes': ['strikes-layer', 'strikes-glow'],
-    'layer-buildings': ['buildings-3d'],
-    'layer-rubble': ['rubble-layer'],
+    'layer-buildings': ['buildings-3d', 'buildings-intact'],
+    'layer-rubble': ['rubble-layer', 'devastation-overlay'],
     'layer-damage-zones': ['damage-zones-fill', 'damage-zones-outline', 'damage-zones-labels'],
     'layer-buffer': ['buffer-zones-fill', 'buffer-zones-labels'],
     'layer-restricted': ['restricted-areas-fill', 'restricted-areas-labels'],
@@ -595,7 +654,7 @@ async function main() {
     statsData = data.stats;
 
     updateHeaderStats(data.stats);
-    initMap(data.buildings, data.hospitals, data.schools, data.camps, data.roads, data.rubble, data.damageZones, data.bufferZones, data.restrictedAreas, data.strikes);
+    initMap(data.buildings, data.hospitals, data.schools, data.camps, data.roads, data.rubble, data.damageZones, data.bufferZones, data.restrictedAreas, data.devastationOverlay, data.strikes);
     setupControls();
 
     setTimeout(() => {
