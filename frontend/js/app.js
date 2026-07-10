@@ -16,36 +16,51 @@ let threeScene, threeRenderer, threeCamera, strikeMeshes = [];
 
 const GAZA_BOUNDS = [[34.205, 31.220], [34.565, 31.595]];
 
+function siteBase() {
+  const { pathname } = window.location;
+  if (pathname.endsWith('/')) return pathname;
+  const slash = pathname.lastIndexOf('/');
+  return slash >= 0 ? `${pathname.slice(0, slash + 1)}` : '/';
+}
+
+function dataUrl(path) {
+  return `${siteBase()}${path.replace(/^\//, '')}`;
+}
+
+async function fetchJson(path) {
+  const response = await fetch(dataUrl(path));
+  if (!response.ok) {
+    throw new Error(`Failed to load ${path}: ${response.status}`);
+  }
+  return response.json();
+}
+
 async function loadData() {
   const [strikes, stats, buildings, hospitals, schools, camps, roads, damageZones, bufferZones, restrictedAreas, devastationOverlay, gazaBoundary] = await Promise.all([
-    fetch('api/strikes.json').then(r => r.json()),
-    fetch('api/statistics.json').then(r => r.json()),
-    fetch('map/buildings.geojson').then(r => r.json()),
-    fetch('map/hospitals.geojson').then(r => r.json()),
-    fetch('map/schools.geojson').then(r => r.json()),
-    fetch('map/refugee_camps.geojson').then(r => r.json()),
-    fetch('map/roads.geojson').then(r => r.json()),
-    fetch('map/damage_zones.geojson').then(r => r.json()),
-    fetch('map/buffer_zones.geojson').then(r => r.json()),
-    fetch('map/restricted_areas.geojson').then(r => r.json()),
-    fetch('map/devastation_overlay.geojson').then(r => r.json()),
-    fetch('map/gaza_boundary.geojson').then(r => r.json())
+    fetchJson('api/strikes.json'),
+    fetchJson('api/statistics.json'),
+    fetchJson('map/buildings.geojson'),
+    fetchJson('map/hospitals.geojson'),
+    fetchJson('map/schools.geojson'),
+    fetchJson('map/refugee_camps.geojson'),
+    fetchJson('map/roads.geojson'),
+    fetchJson('map/damage_zones.geojson'),
+    fetchJson('map/buffer_zones.geojson'),
+    fetchJson('map/restricted_areas.geojson'),
+    fetchJson('map/devastation_overlay.geojson'),
+    fetchJson('map/gaza_boundary.geojson')
   ]);
 
   const strikeDetails = await Promise.all(
     strikes.slice(0, 8).map(s =>
-      fetch(`data/strikes/${s.id}.json`)
-        .then(r => r.json())
-        .catch(() => s)
+      fetchJson(`data/strikes/${s.id}.json`).catch(() => s)
     )
   );
 
   // Load remaining strike details in background
   Promise.all(
     strikes.slice(8).map(s =>
-      fetch(`data/strikes/${s.id}.json`)
-        .then(r => r.json())
-        .catch(() => s)
+      fetchJson(`data/strikes/${s.id}.json`).catch(() => s)
     )
   ).then(rest => {
     fullStrikes = [...strikeDetails, ...rest];
@@ -105,12 +120,18 @@ function strikesToGeoJSON(strikes) {
 
 function fitFullGaza(animate = true) {
   if (!map) return;
+  const sidebarOpen = window.innerWidth > 768;
   map.fitBounds(GAZA_BOUNDS, {
-    padding: { top: 50, bottom: 50, left: 50, right: 50 },
-    pitch: 50,
-    bearing: -12,
+    padding: {
+      top: 70,
+      bottom: 70,
+      left: 40,
+      right: sidebarOpen ? 340 : 40
+    },
+    pitch: document.getElementById('layer-3d')?.checked ? 35 : 0,
+    bearing: -8,
     duration: animate ? 1200 : 0,
-    maxZoom: 11.5
+    maxZoom: 10.8
   });
 }
 
@@ -151,11 +172,11 @@ function initMap(buildings, hospitals, schools, camps, roads, damageZones, buffe
         }
       ]
     },
-    center: [34.385, 31.410],
-    zoom: 10,
-    pitch: 50,
-    bearing: -12,
-    maxBounds: [[34.10, 31.10], [34.70, 31.70]]
+    center: [34.385, 31.408],
+    zoom: 9.8,
+    pitch: 35,
+    bearing: -8,
+    maxBounds: [[34.05, 31.05], [34.75, 31.75]]
   });
 
   map.addControl(new maplibregl.NavigationControl(), 'bottom-left');
@@ -699,6 +720,10 @@ function setupControls() {
   });
 
   window.addEventListener('resize', () => {
+    if (map) {
+      map.resize();
+      fitFullGaza(false);
+    }
     if (threeRenderer) {
       const container = document.getElementById('three-overlay');
       threeRenderer.setSize(container.clientWidth, container.clientHeight);
