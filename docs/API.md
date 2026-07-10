@@ -31,8 +31,8 @@ Geographic layers: `buildings`, `hospitals`, `schools`, `refugee_camps`, `roads`
 ## Usage
 
 ```bash
-curl https://ibrahimmukherjee.github.io/Open_Source_Gaza/api/statistics.json
-curl https://ibrahimmukherjee.github.io/Open_Source_Gaza/api/strikes.json
+curl https://ibrahimmukherjee-boop.github.io/Open_Source_Gaza/api/statistics.json
+curl https://ibrahimmukherjee-boop.github.io/Open_Source_Gaza/api/strikes.json
 ```
 
 All data is version-controlled. Check git history for record revisions.
