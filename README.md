@@ -2,7 +2,7 @@
 
 An open-source, version-controlled digital twin documenting verified strikes, casualties, and infrastructure damage in Gaza since October 7, 2023.
 
-**Live site:** [https://ibrahimmukherjee.github.io/Open_Source_Gaza/](https://ibrahimmukherjee.github.io/Open_Source_Gaza/)
+**Live site:** [https://ibrahimmukherjee-boop.github.io/Open_Source_Gaza/](https://ibrahimmukherjee-boop.github.io/Open_Source_Gaza/)
 
 ## Purpose
 
