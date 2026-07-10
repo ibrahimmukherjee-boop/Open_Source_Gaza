@@ -12,9 +12,9 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const UNOSAT = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/aggregates/unosat-damage-assessment.json'), 'utf8'));
 const OUTPUT = path.join(ROOT, 'map', 'buildings.geojson');
-const RUBBLE_OUTPUT = path.join(ROOT, 'map', 'rubble.geojson');
 const ZONES_OUTPUT = path.join(ROOT, 'map', 'damage_zones.geojson');
 const DEVASTATION_OUTPUT = path.join(ROOT, 'map', 'devastation_overlay.geojson');
+const BOUNDARY_OUTPUT = path.join(ROOT, 'map', 'gaza_boundary.geojson');
 
 const T = UNOSAT.totals;
 const TOTAL = T.total_structures_estimated;
@@ -51,8 +51,9 @@ const GOVERNORATES = UNOSAT.governorates.map(g => ({
 }));
 
 const BUILDING_TYPES = ['residential', 'residential', 'residential', 'commercial', 'mosque', 'school', 'infrastructure'];
-const GRID_STEP = 0.0025;
-const CELL_SIZE = 0.0012;
+// Coarser grid keeps file size web-friendly (~800KB) while maintaining full territorial coverage
+const GRID_STEP = 0.005;
+const CELL_SIZE = 0.0022;
 
 function seededRandom(seed) {
   const x = Math.sin(seed) * 10000;
@@ -137,30 +138,40 @@ function generateBuildings() {
   };
 }
 
-function generateRubbleZones(buildings) {
-  const rubbleFeatures = buildings.features
-    .filter(f => isRubbleVisible(f.properties.status))
-    .map(f => ({
-      type: 'Feature',
-      properties: {
-        status: 'rubble',
-        damage_tier: f.properties.status,
-        governorate: f.properties.governorate,
-        note: 'Matches satellite-visible destruction (Google Maps/Maxar imagery)'
-      },
-      geometry: f.geometry
-    }));
-
+function generateGazaBoundary() {
   return {
     type: 'FeatureCollection',
     metadata: {
-      source: 'All non-intact cells — what appears as rubble on satellite imagery',
-      grid_rubble_cells: rubbleFeatures.length,
-      unosat_destroyed: T.structures_destroyed,
-      unosat_total_damaged: T.structures_damaged,
-      percent_of_grid: ((rubbleFeatures.length / buildings.features.length) * 100).toFixed(1) + '%'
+      source: 'Gaza Strip administrative boundary',
+      area_km2: 365,
+      length_km: 41,
+      width_km: 12
     },
-    features: rubbleFeatures
+    features: [{
+      type: 'Feature',
+      properties: { name: 'Gaza Strip', label: 'GAZA STRIP — 365 km²' },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[
+          [34.205, 31.220], [34.565, 31.220], [34.565, 31.595],
+          [34.205, 31.595], [34.205, 31.220]
+        ]]
+      }
+    }]
+  };
+}
+
+function generateRubbleMeta(buildings) {
+  const rubbleCount = buildings.features.filter(f => isRubbleVisible(f.properties.status)).length;
+  return {
+    type: 'FeatureCollection',
+    metadata: {
+      source: 'Rubble rendered from buildings.geojson via status filter',
+      grid_rubble_cells: rubbleCount,
+      unosat_destroyed: T.structures_destroyed,
+      percent_of_grid: ((rubbleCount / buildings.features.length) * 100).toFixed(1) + '%'
+    },
+    features: []
   };
 }
 
@@ -236,27 +247,31 @@ function generateDamageZones() {
 }
 
 const buildings = generateBuildings();
-const rubble = generateRubbleZones(buildings);
 const zones = generateDamageZones();
 const devastation = generateDevastationOverlay();
+const boundary = generateGazaBoundary();
 
 fs.writeFileSync(OUTPUT, JSON.stringify(buildings));
-fs.writeFileSync(RUBBLE_OUTPUT, JSON.stringify(rubble));
 fs.writeFileSync(ZONES_OUTPUT, JSON.stringify(zones));
 fs.writeFileSync(DEVASTATION_OUTPUT, JSON.stringify(devastation));
+fs.writeFileSync(BOUNDARY_OUTPUT, JSON.stringify(boundary));
+// Lightweight metadata-only rubble reference (actual rubble rendered from buildings layer)
+fs.writeFileSync(path.join(ROOT, 'map', 'rubble.geojson'), JSON.stringify(generateRubbleMeta(buildings)));
 
 const counts = buildings.features.reduce((acc, f) => {
   acc[f.properties.status] = (acc[f.properties.status] || 0) + 1;
   return acc;
 }, {});
 
+const rubbleCount = buildings.features.filter(f => isRubbleVisible(f.properties.status)).length;
 const total = buildings.features.length;
-const rubblePct = ((rubble.features.length / total) * 100).toFixed(1);
-const intactPct = ((counts.intact || 0) / total * 100).toFixed(1);
+const rubblePct = ((rubbleCount / total) * 100).toFixed(1);
+const intactPct = (((counts.intact || 0) / total) * 100).toFixed(1);
+const fileSizeKB = (fs.statSync(OUTPUT).size / 1024).toFixed(0);
 
-console.log(`Generated ${total} cells — FULL COVERAGE (no gaps)`);
+console.log(`Generated ${total} cells — FULL COVERAGE (no gaps), ${fileSizeKB}KB`);
 console.log('Status breakdown:', counts);
-console.log(`Satellite-visible rubble: ${rubble.features.length} cells (${rubblePct}%)`);
+console.log(`Satellite-visible rubble: ${rubbleCount} cells (${rubblePct}%)`);
 console.log(`Intact (UNOSAT undamaged): ${counts.intact || 0} cells (${intactPct}%)`);
 console.log(`Target UNOSAT ratios:`, RATIOS);
 console.log(`UNOSAT official: ${T.structures_damaged.toLocaleString()} damaged (${T.structures_damaged_percent}%), ${T.structures_destroyed.toLocaleString()} destroyed`);

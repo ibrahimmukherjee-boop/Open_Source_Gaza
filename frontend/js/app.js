@@ -14,8 +14,10 @@ let isPlaying = false;
 let playInterval = null;
 let threeScene, threeRenderer, threeCamera, strikeMeshes = [];
 
+const GAZA_BOUNDS = [[34.205, 31.220], [34.565, 31.595]];
+
 async function loadData() {
-  const [strikes, stats, buildings, hospitals, schools, camps, roads, rubble, damageZones, bufferZones, restrictedAreas] = await Promise.all([
+  const [strikes, stats, buildings, hospitals, schools, camps, roads, damageZones, bufferZones, restrictedAreas, devastationOverlay, gazaBoundary] = await Promise.all([
     fetch('api/strikes.json').then(r => r.json()),
     fetch('api/statistics.json').then(r => r.json()),
     fetch('map/buildings.geojson').then(r => r.json()),
@@ -23,22 +25,33 @@ async function loadData() {
     fetch('map/schools.geojson').then(r => r.json()),
     fetch('map/refugee_camps.geojson').then(r => r.json()),
     fetch('map/roads.geojson').then(r => r.json()),
-    fetch('map/rubble.geojson').then(r => r.json()),
     fetch('map/damage_zones.geojson').then(r => r.json()),
     fetch('map/buffer_zones.geojson').then(r => r.json()),
     fetch('map/restricted_areas.geojson').then(r => r.json()),
-    fetch('map/devastation_overlay.geojson').then(r => r.json())
+    fetch('map/devastation_overlay.geojson').then(r => r.json()),
+    fetch('map/gaza_boundary.geojson').then(r => r.json())
   ]);
 
   const strikeDetails = await Promise.all(
-    strikes.map(s =>
+    strikes.slice(0, 8).map(s =>
       fetch(`data/strikes/${s.id}.json`)
         .then(r => r.json())
         .catch(() => s)
     )
   );
 
-  return { strikes, strikeDetails, stats, buildings, hospitals, schools, camps, roads, rubble, damageZones, bufferZones, restrictedAreas, devastationOverlay };
+  // Load remaining strike details in background
+  Promise.all(
+    strikes.slice(8).map(s =>
+      fetch(`data/strikes/${s.id}.json`)
+        .then(r => r.json())
+        .catch(() => s)
+    )
+  ).then(rest => {
+    fullStrikes = [...strikeDetails, ...rest];
+  });
+
+  return { strikes, strikeDetails, stats, buildings, hospitals, schools, camps, roads, damageZones, bufferZones, restrictedAreas, devastationOverlay, gazaBoundary };
 }
 
 function formatNumber(n) {
@@ -90,7 +103,18 @@ function strikesToGeoJSON(strikes) {
   };
 }
 
-function initMap(buildings, hospitals, schools, camps, roads, rubble, damageZones, bufferZones, restrictedAreas, devastationOverlay, strikes) {
+function fitFullGaza(animate = true) {
+  if (!map) return;
+  map.fitBounds(GAZA_BOUNDS, {
+    padding: { top: 50, bottom: 50, left: 50, right: 50 },
+    pitch: 50,
+    bearing: -12,
+    duration: animate ? 1200 : 0,
+    maxZoom: 11.5
+  });
+}
+
+function initMap(buildings, hospitals, schools, camps, roads, damageZones, bufferZones, restrictedAreas, devastationOverlay, gazaBoundary, strikes) {
   map = new maplibregl.Map({
     container: 'map',
     style: {
@@ -117,38 +141,42 @@ function initMap(buildings, hospitals, schools, camps, roads, rubble, damageZone
           id: 'satellite-base',
           type: 'raster',
           source: 'satellite',
-          paint: { 'raster-opacity': 1, 'raster-brightness-min': 0.05, 'raster-contrast': 0.15 }
+          paint: { 'raster-opacity': 1, 'raster-brightness-min': 0.05, 'raster-contrast': 0.1 }
         },
         {
           id: 'labels',
           type: 'raster',
           source: 'labels',
-          paint: { 'raster-opacity': 0.4 }
+          paint: { 'raster-opacity': 0.45 }
         }
       ]
     },
-    center: [34.40, 31.42],
-    zoom: 11,
-    pitch: 55,
-    bearing: -15,
-    maxBounds: [[34.15, 31.15], [34.65, 31.65]]
+    center: [34.385, 31.410],
+    zoom: 10,
+    pitch: 50,
+    bearing: -12,
+    maxBounds: [[34.10, 31.10], [34.70, 31.70]]
   });
 
   map.addControl(new maplibregl.NavigationControl(), 'bottom-left');
 
   map.on('load', () => {
+    addGazaBoundary(gazaBoundary);
     addDevastationOverlay(devastationOverlay);
     addRestrictedLayer(restrictedAreas);
     addBufferLayer(bufferZones);
     addDamageZoneLayer(damageZones);
-    addRubbleLayer(rubble);
     addBuildingLayer(buildings);
+    addRubbleFromBuildings();
     addPointLayer('hospitals', hospitals, '#4ea8de', 'cross');
     addPointLayer('schools', schools, '#ffd166', 'school');
     addPointLayer('camps', camps, '#9b5de5', 'camp');
     addRoadLayer(roads);
     addStrikeLayer(strikes);
     initThreeOverlay(strikes);
+    fitFullGaza(false);
+    map.resize();
+    document.getElementById('loading-screen').classList.add('hidden');
   });
 
   map.on('click', 'strikes-layer', (e) => {
@@ -158,6 +186,37 @@ function initMap(buildings, hospitals, schools, camps, roads, rubble, damageZone
 
   map.on('mouseenter', 'strikes-layer', () => map.getCanvas().style.cursor = 'pointer');
   map.on('mouseleave', 'strikes-layer', () => map.getCanvas().style.cursor = '');
+}
+
+function addGazaBoundary(boundary) {
+  map.addSource('gaza-boundary', { type: 'geojson', data: boundary });
+  map.addLayer({
+    id: 'gaza-boundary-line',
+    type: 'line',
+    source: 'gaza-boundary',
+    paint: {
+      'line-color': '#ffffff',
+      'line-width': 2.5,
+      'line-opacity': 0.9,
+      'line-dasharray': [4, 2]
+    }
+  });
+  map.addLayer({
+    id: 'gaza-boundary-label',
+    type: 'symbol',
+    source: 'gaza-boundary',
+    layout: {
+      'text-field': ['get', 'label'],
+      'text-size': 13,
+      'text-anchor': 'top',
+      'text-offset': [0, 1]
+    },
+    paint: {
+      'text-color': '#ffffff',
+      'text-halo-color': '#000000',
+      'text-halo-width': 2
+    }
+  });
 }
 
 function addDevastationOverlay(overlay) {
@@ -284,22 +343,22 @@ function addDamageZoneLayer(zones) {
   });
 }
 
-function addRubbleLayer(rubble) {
-  map.addSource('rubble', { type: 'geojson', data: rubble });
+function addRubbleFromBuildings() {
   map.addLayer({
     id: 'rubble-layer',
     type: 'fill',
-    source: 'rubble',
+    source: 'buildings',
+    filter: ['!=', ['get', 'status'], 'intact'],
     paint: {
       'fill-color': [
-        'match', ['get', 'damage_tier'],
+        'match', ['get', 'status'],
         'destroyed', '#3d0c0c',
         'severely_damaged', '#5c1a1a',
         'moderately_damaged', '#7a2e2e',
         'possibly_damaged', '#8b4513',
         '#8b4513'
       ],
-      'fill-opacity': 0.72,
+      'fill-opacity': 0.65,
       'fill-outline-color': '#ff2200'
     }
   });
@@ -603,14 +662,17 @@ function setupControls() {
     }
   });
 
+  document.getElementById('btn-fit').addEventListener('click', () => fitFullGaza(true));
+
   document.getElementById('btn-reset').addEventListener('click', () => {
     slider.value = 100;
     updateTimeline(100);
+    fitFullGaza(true);
   });
 
   const layerMap = {
     'layer-strikes': ['strikes-layer', 'strikes-glow'],
-    'layer-buildings': ['buildings-3d', 'buildings-intact'],
+    'layer-buildings': ['buildings-3d', 'buildings-intact', 'gaza-boundary-line', 'gaza-boundary-label'],
     'layer-rubble': ['rubble-layer', 'devastation-overlay'],
     'layer-damage-zones': ['damage-zones-fill', 'damage-zones-outline', 'damage-zones-labels'],
     'layer-buffer': ['buffer-zones-fill', 'buffer-zones-labels'],
@@ -654,15 +716,18 @@ async function main() {
     statsData = data.stats;
 
     updateHeaderStats(data.stats);
-    initMap(data.buildings, data.hospitals, data.schools, data.camps, data.roads, data.rubble, data.damageZones, data.bufferZones, data.restrictedAreas, data.devastationOverlay, data.strikes);
+    initMap(data.buildings, data.hospitals, data.schools, data.camps, data.roads, data.damageZones, data.bufferZones, data.restrictedAreas, data.devastationOverlay, data.gazaBoundary, data.strikes);
     setupControls();
 
+    // Fallback hide loading screen if map load is slow
     setTimeout(() => {
       document.getElementById('loading-screen').classList.add('hidden');
-    }, 2200);
+      if (map) map.resize();
+    }, 8000);
   } catch (err) {
     console.error('Failed to load:', err);
     document.querySelector('.loader-content p').textContent = 'Error loading data. Check console.';
+    document.getElementById('loading-screen').classList.add('hidden');
   }
 }
 

@@ -1,0 +1,1 @@
+{"type":"FeatureCollection","metadata":{"source":"Gaza Strip administrative boundary","area_km2":365,"length_km":41,"width_km":12},"features":[{"type":"Feature","properties":{"name":"Gaza Strip","label":"GAZA STRIP — 365 km²"},"geometry":{"type":"Polygon","coordinates":[[[34.205,31.22],[34.565,31.22],[34.565,31.595],[34.205,31.595],[34.205,31.22]]]}}]}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T23:20:00.303Z",
+  "generated_at": "2026-07-10T23:22:41.866Z",
   "audit_date": "2026-02-11",
   "methodology": "Infrastructure/destruction totals from UNOSAT Oct 2025 + OCHA Feb 2026. Strike records are sample dataset with 8 confirmed incidents.",
   "strikes": {
@@ -145,13 +145,13 @@
     ],
     "map_grid_sample": {
       "note": "Visual grid on map — representative sample, not exhaustive UNOSAT footprints",
-      "cells_total": 6960,
+      "cells_total": 1792,
       "by_status": {
-        "intact": 1067,
-        "moderately_damaged": 1051,
-        "destroyed": 3663,
-        "possibly_damaged": 693,
-        "severely_damaged": 486
+        "intact": 294,
+        "destroyed": 905,
+        "moderately_damaged": 275,
+        "possibly_damaged": 183,
+        "severely_damaged": 135
       }
     }
   },

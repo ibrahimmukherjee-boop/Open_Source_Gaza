@@ -32,7 +32,7 @@ const requiredFiles = [
   'data/aggregates/territorial-shrinkage.json',
   'data/aggregates/ocha-snapshot-2026-02.json',
   'map/buildings.geojson',
-  'map/rubble.geojson',
+  'map/gaza_boundary.geojson',
   'map/devastation_overlay.geojson',
   'map/damage_zones.geojson',
   'map/buffer_zones.geojson',
@@ -113,10 +113,10 @@ if (buildings.metadata.official_structures_damaged === unosat.totals.structures_
   warn('Building grid metadata does not match UNOSAT totals');
 }
 
-if (buildings.features.length >= 5000) {
-  pass(`Building grid has ${buildings.features.length} full-coverage cells`);
+if (buildings.features.length >= 1500) {
+  pass(`Building grid has ${buildings.features.length} full-coverage cells (${(fs.statSync(path.join(ROOT, 'map/buildings.geojson')).size/1024).toFixed(0)}KB)`);
 } else {
-  warn(`Building grid has ${buildings.features.length} cells — expected 5000+ for full coverage`);
+  warn(`Building grid has ${buildings.features.length} cells — may not cover full territory`);
 }
 
 const rubblePct = buildings.features.filter(f => f.properties.status !== 'intact').length / buildings.features.length;
