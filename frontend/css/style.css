@@ -312,6 +312,10 @@ body {
 .toggle-dot.schools { color: var(--accent-yellow); background: var(--accent-yellow); }
 .toggle-dot.camps { color: var(--accent-purple); background: var(--accent-purple); }
 .toggle-dot.roads { color: var(--accent-green); background: var(--accent-green); }
+.toggle-dot.rubble { color: #8b4513; background: #8b4513; }
+.toggle-dot.zones { color: #ff3b3b; background: #ff3b3b; opacity: 0.6; }
+.toggle-dot.buffer { color: #ffaa00; background: #ffaa00; }
+.toggle-dot.restricted { color: #cc0000; background: #cc0000; opacity: 0.7; }
 
 .toggle input:not(:checked) + .toggle-dot { opacity: 0.3; }
 

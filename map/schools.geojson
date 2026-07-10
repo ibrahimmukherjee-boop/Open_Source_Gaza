@@ -1,40 +1,25 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "source": "OpenStreetMap + UNRWA + OCHA",
+    "source": "UNRWA / OCHA Education Cluster — Feb 2026",
     "description": "Schools in Gaza Strip",
-    "updated": "2025-07-01"
+    "updated": "2026-02-11",
+    "total_schools": 564,
+    "schools_need_reconstruction": 526,
+    "schools_damaged_percent": 93,
+    "children_without_education": 637475,
+    "note": "526 of 564 school buildings require full reconstruction or major rehabilitation (OCHA Oct 2025)"
   },
   "features": [
-    {
-      "type": "Feature",
-      "properties": { "name": "UNRWA Beach Elementary Co-Ed B", "type": "school", "status": "destroyed", "students": 800 },
-      "geometry": { "type": "Point", "coordinates": [34.455, 31.510] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "Al-Fakhura School", "type": "school", "status": "destroyed", "students": 1200, "used_as_shelter": true },
-      "geometry": { "type": "Point", "coordinates": [34.478, 31.538] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "Al-Sardi School", "type": "school", "status": "destroyed", "students": 600, "used_as_shelter": true },
-      "geometry": { "type": "Point", "coordinates": [34.441, 31.506] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "UNRWA Preparatory Boys A", "type": "school", "status": "damaged", "students": 500 },
-      "geometry": { "type": "Point", "coordinates": [34.350, 31.380] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "Tal Al-Zaatar School", "type": "school", "status": "destroyed", "students": 900, "used_as_shelter": true },
-      "geometry": { "type": "Point", "coordinates": [34.470, 31.530] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "Al-Furqan School", "type": "school", "status": "destroyed", "students": 700 },
-      "geometry": { "type": "Point", "coordinates": [34.320, 31.420] }
-    }
+    { "type": "Feature", "properties": { "name": "UNRWA Beach Elementary Co-Ed B", "status": "destroyed", "students": 800, "used_as_shelter": true }, "geometry": { "type": "Point", "coordinates": [34.455, 31.510] } },
+    { "type": "Feature", "properties": { "name": "Al-Fakhura School", "status": "destroyed", "students": 1200, "used_as_shelter": true, "note": "Nov 2023 strike — 200+ killed" }, "geometry": { "type": "Point", "coordinates": [34.478, 31.538] } },
+    { "type": "Feature", "properties": { "name": "Al-Sardi School", "status": "destroyed", "students": 600, "used_as_shelter": true }, "geometry": { "type": "Point", "coordinates": [34.441, 31.506] } },
+    { "type": "Feature", "properties": { "name": "Tal Al-Zaatar School", "status": "destroyed", "students": 900, "used_as_shelter": true }, "geometry": { "type": "Point", "coordinates": [34.470, 31.530] } },
+    { "type": "Feature", "properties": { "name": "Al-Furqan School", "status": "destroyed", "students": 700 }, "geometry": { "type": "Point", "coordinates": [34.320, 31.420] } },
+    { "type": "Feature", "properties": { "name": "UNRWA Preparatory Boys A", "status": "destroyed", "students": 500 }, "geometry": { "type": "Point", "coordinates": [34.350, 31.380] } },
+    { "type": "Feature", "properties": { "name": "Al-Fukhari School", "status": "destroyed", "students": 600 }, "geometry": { "type": "Point", "coordinates": [34.270, 31.305] } },
+    { "type": "Feature", "properties": { "name": "UNRWA Elementary A & B", "status": "destroyed", "students": 900, "governorate": "Khan Yunis" }, "geometry": { "type": "Point", "coordinates": [34.305, 31.345] } },
+    { "type": "Feature", "properties": { "name": "Al-Zahra School", "status": "destroyed", "students": 500, "governorate": "Deir al-Balah" }, "geometry": { "type": "Point", "coordinates": [34.385, 31.445] } },
+    { "type": "Feature", "properties": { "name": "Al-Maghazi Prep Girls", "status": "destroyed", "students": 400, "governorate": "Deir al-Balah" }, "geometry": { "type": "Point", "coordinates": [34.365, 31.395] } }
   ]
 }

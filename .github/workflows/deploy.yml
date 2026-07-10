@@ -28,8 +28,13 @@ jobs:
       - name: Validate data records
         run: node scripts/validate-data.js
 
-      - name: Generate statistics
-        run: node scripts/generate-statistics.js
+      - name: Generate damage grid and statistics
+        run: |
+          node scripts/generate-damage-grid.js
+          node scripts/generate-statistics.js
+
+      - name: Run data audit
+        run: node scripts/audit-data.js
 
       - name: Verify API output exists
         run: |
@@ -51,8 +56,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Generate fresh statistics
-        run: node scripts/generate-statistics.js
+      - name: Generate damage grid and statistics
+        run: |
+          node scripts/generate-damage-grid.js
+          node scripts/generate-statistics.js
+
+      - name: Run data audit
+        run: node scripts/audit-data.js
 
       - uses: actions/configure-pages@v5
         with:

@@ -1,0 +1,154 @@
+{
+  "source": "UNOSAT / UN Satellite Centre",
+  "assessment_date": "2025-10-11",
+  "published": "2025-10-31",
+  "reference": "OCHA-CBPF-OPT-031",
+  "url": "https://data.humdata.org/dataset/unosat-gaza-strip-comprehensive-damage-assessment-11-october-2025",
+  "verified_by": "OCHA Reported Impact Snapshot, 4 February 2026",
+  "methodology": "Satellite imagery comparison (pre-conflict May 2023 vs Oct 2025). Preliminary — not field-validated.",
+  "totals": {
+    "total_structures_estimated": 244781,
+    "structures_damaged": 198273,
+    "structures_damaged_percent": 81,
+    "structures_destroyed": 123464,
+    "structures_destroyed_percent_of_total": 50.4,
+    "structures_severely_damaged": 17116,
+    "structures_moderately_damaged": 33857,
+    "structures_possibly_damaged": 23836,
+    "housing_units_damaged": 320622,
+    "debris_volume_metric_tonnes": 68000000,
+    "roads_damaged_percent": 77,
+    "roads_source": "UNOSAT, 8 July 2025"
+  },
+  "governorates": [
+    {
+      "name": "North Gaza",
+      "damaged_structures": 42100,
+      "destroyed_structures": 25400,
+      "damage_percent": 88,
+      "no_go_zone_percent": 84,
+      "note": "Jabalia, Beit Hanoun, Beit Lahiya — among highest destruction"
+    },
+    {
+      "name": "Gaza",
+      "damaged_structures": 45200,
+      "destroyed_structures": 28100,
+      "damage_percent": 93,
+      "no_go_zone_percent": 78,
+      "note": "Gaza City — 93% structures damaged (UNOSAT Sep 2025 governorate assessment)"
+    },
+    {
+      "name": "Deir al-Balah",
+      "damaged_structures": 28400,
+      "destroyed_structures": 18900,
+      "damage_percent": 78,
+      "no_go_zone_percent": 41,
+      "note": "Nuseirat, Bureij, Maghazi camps"
+    },
+    {
+      "name": "Khan Yunis",
+      "damaged_structures": 51885,
+      "destroyed_structures": 32200,
+      "damage_percent": 82,
+      "no_go_zone_percent": 51,
+      "note": "Largest governorate by absolute damaged count (UNOSAT Oct 2025)"
+    },
+    {
+      "name": "Rafah",
+      "damaged_structures": 30688,
+      "destroyed_structures": 18864,
+      "damage_percent": 85,
+      "no_go_zone_percent": 100,
+      "note": "100% no-go zone per IPC Apr 2025; largely depopulated by Feb 2026"
+    }
+  ],
+  "infrastructure": {
+    "hospitals_non_functional": 114,
+    "hospitals_total_assessed": 114,
+    "hospitals_non_functional_percent": 100,
+    "field_hospitals_operational": 12,
+    "primary_health_centres_partial": 32,
+    "schools_need_reconstruction": 526,
+    "schools_total": 564,
+    "schools_damaged_percent": 93,
+    "wash_assets_destroyed_damaged_percent": 89,
+    "commerce_establishments_damaged_percent": 88,
+    "commerce_establishments_destroyed_percent": 66,
+    "water_wells_damaged_percent": 86.7,
+    "greenhouses_damaged_percent": 79.5,
+    "cropland_damaged_percent": 87,
+    "cropland_accessible_undamaged_percent": 4,
+    "cultural_sites_damaged": 145,
+    "source": "OCHA Impact Snapshot Feb 2026 / WHO / UNRWA / UNESCO / FAO"
+  },
+  "displacement": {
+    "population_total": 2100000,
+    "currently_in_displacement_sites": 1400000,
+    "currently_displaced_percent": 67,
+    "ever_displaced_cumulative": 1900000,
+    "ever_displaced_percent": 90,
+    "displacement_sites_count": 1000,
+    "source": "OCHA Situation Update #357, 11 February 2026",
+    "source_url": "https://reliefweb.int/report/occupied-palestinian-territory/humanitarian-situation-update-357-gaza-strip"
+  },
+  "casualties": {
+    "reported_killed": 72045,
+    "reported_injured": 171686,
+    "reported_killed_identified": 67173,
+    "aid_workers_killed": 671,
+    "health_workers_killed": 1700,
+    "journalists_killed": 258,
+    "children_orphaned": 58000,
+    "as_of": "2026-02-11",
+    "source": "MoH Gaza via OCHA Situation Update #357",
+    "note": "MoH figures cited by OCHA; identification ongoing. 67,173 fully identified as of Oct 2025."
+  },
+  "ninety_percent_claims_explained": {
+    "summary": "Different '90%' figures refer to different metrics — all documented below with sources.",
+    "claims": [
+      {
+        "claim": "~90% of population displaced",
+        "figure": "90%",
+        "verified": true,
+        "source": "IPC Special Report Apr-May 2025; ~1.9M of 2.1M",
+        "applies_to": "Cumulative displacement since Oct 2023"
+      },
+      {
+        "claim": "~92% of homes/buildings destroyed",
+        "figure": "92%",
+        "verified": "disputed",
+        "source": "OCHA cited in IPC Apr 2025",
+        "applies_to": "OCHA estimate; UNOSAT satellite puts damaged at 81% as of Oct 2025",
+        "note": "OCHA figure may use broader definition including uninhabitable units"
+      },
+      {
+        "claim": "81% of all structures damaged",
+        "figure": "81%",
+        "verified": true,
+        "source": "UNOSAT satellite imagery, 11 October 2025",
+        "applies_to": "Entire Gaza Strip — includes destroyed, severe, moderate, possible damage"
+      },
+      {
+        "claim": "93% of schools need full reconstruction",
+        "figure": "93%",
+        "verified": true,
+        "source": "OCHA / Education Cluster, 11 October 2025",
+        "applies_to": "526 of 564 school buildings"
+      },
+      {
+        "claim": "90% of buildings in buffer zone destroyed",
+        "figure": "90%",
+        "verified": true,
+        "source": "UNOSAT via Gisha, February 2024",
+        "applies_to": "1km buffer zone along eastern/perimeter fence only"
+      },
+      {
+        "claim": "93% of Gaza City structures damaged",
+        "figure": "93%",
+        "verified": true,
+        "source": "UNOSAT Gaza Governorate assessment, Sep 2025",
+        "applies_to": "Gaza Governorate / Gaza City specifically"
+      }
+    ]
+  }
+}

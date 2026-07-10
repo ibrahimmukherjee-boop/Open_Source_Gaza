@@ -32,21 +32,21 @@
       </div>
     </div>
     <div class="header-stats" id="header-stats">
-      <div class="stat-pill">
-        <span class="stat-label">Verified Strikes</span>
-        <span class="stat-value" id="stat-strikes">—</span>
-      </div>
       <div class="stat-pill critical">
         <span class="stat-label">Reported Killed</span>
         <span class="stat-value" id="stat-killed">—</span>
       </div>
-      <div class="stat-pill">
-        <span class="stat-label">Displaced</span>
-        <span class="stat-value" id="stat-displaced">—</span>
+      <div class="stat-pill critical">
+        <span class="stat-label">Structures Damaged</span>
+        <span class="stat-value" id="stat-damaged-pct">—</span>
       </div>
       <div class="stat-pill">
-        <span class="stat-label">Buildings Destroyed</span>
-        <span class="stat-value" id="stat-buildings">—</span>
+        <span class="stat-label">Territory Restricted</span>
+        <span class="stat-value" id="stat-restricted">—</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Displaced Now</span>
+        <span class="stat-value" id="stat-displaced">—</span>
       </div>
     </div>
     <div class="header-right">
@@ -85,6 +85,10 @@
         <label class="toggle"><input type="checkbox" id="layer-hospitals" checked><span class="toggle-dot hospitals"></span> Hospitals</label>
         <label class="toggle"><input type="checkbox" id="layer-schools" checked><span class="toggle-dot schools"></span> Schools</label>
         <label class="toggle"><input type="checkbox" id="layer-camps" checked><span class="toggle-dot camps"></span> Refugee Camps</label>
+        <label class="toggle"><input type="checkbox" id="layer-rubble" checked><span class="toggle-dot rubble"></span> Rubble Zones</label>
+        <label class="toggle"><input type="checkbox" id="layer-damage-zones" checked><span class="toggle-dot zones"></span> Damage Zones</label>
+        <label class="toggle"><input type="checkbox" id="layer-buffer" checked><span class="toggle-dot buffer"></span> Buffer Zones (IDF)</label>
+        <label class="toggle"><input type="checkbox" id="layer-restricted" checked><span class="toggle-dot restricted"></span> No-Go Areas</label>
         <label class="toggle"><input type="checkbox" id="layer-roads"><span class="toggle-dot roads"></span> Roads</label>
         <label class="toggle"><input type="checkbox" id="layer-3d" checked><span class="toggle-dot"></span> 3D View</label>
       </div>
@@ -107,8 +111,8 @@
   </aside>
 
   <div id="disclaimer">
-    Data sourced from verified records in our <a href="https://github.com/ibrahimmukherjee-boop/Open_Source_Gaza">open repository</a>.
-    Aggregate figures include OCHA/UN estimates. All records include confidence scores and source attribution.
+    Data from UNOSAT satellite assessment (Oct 2025): 81% of structures damaged, 123,464 destroyed.
+    See our <a href="https://github.com/ibrahimmukherjee-boop/Open_Source_Gaza">open repository</a> for sources and methodology.
   </div>
 
   <script src="frontend/js/app.js" type="module"></script>

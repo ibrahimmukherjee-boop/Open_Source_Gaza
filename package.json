@@ -6,7 +6,8 @@
     "validate": "node scripts/validate-data.js",
     "stats": "node scripts/generate-statistics.js",
     "seed": "node scripts/seed-reported-strikes.js",
-    "build": "node scripts/generate-statistics.js",
+    "build": "node scripts/generate-damage-grid.js && node scripts/generate-statistics.js",
+    "audit": "node scripts/audit-data.js",
     "serve": "npx serve ."
   },
   "repository": {

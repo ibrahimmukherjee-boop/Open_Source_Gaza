@@ -15,14 +15,18 @@ let playInterval = null;
 let threeScene, threeRenderer, threeCamera, strikeMeshes = [];
 
 async function loadData() {
-  const [strikes, stats, buildings, hospitals, schools, camps, roads] = await Promise.all([
+  const [strikes, stats, buildings, hospitals, schools, camps, roads, rubble, damageZones, bufferZones, restrictedAreas] = await Promise.all([
     fetch('api/strikes.json').then(r => r.json()),
     fetch('api/statistics.json').then(r => r.json()),
     fetch('map/buildings.geojson').then(r => r.json()),
     fetch('map/hospitals.geojson').then(r => r.json()),
     fetch('map/schools.geojson').then(r => r.json()),
     fetch('map/refugee_camps.geojson').then(r => r.json()),
-    fetch('map/roads.geojson').then(r => r.json())
+    fetch('map/roads.geojson').then(r => r.json()),
+    fetch('map/rubble.geojson').then(r => r.json()),
+    fetch('map/damage_zones.geojson').then(r => r.json()),
+    fetch('map/buffer_zones.geojson').then(r => r.json()),
+    fetch('map/restricted_areas.geojson').then(r => r.json())
   ]);
 
   const strikeDetails = await Promise.all(
@@ -33,7 +37,7 @@ async function loadData() {
     )
   );
 
-  return { strikes, strikeDetails, stats, buildings, hospitals, schools, camps, roads };
+  return { strikes, strikeDetails, stats, buildings, hospitals, schools, camps, roads, rubble, damageZones, bufferZones, restrictedAreas };
 }
 
 function formatNumber(n) {
@@ -43,10 +47,11 @@ function formatNumber(n) {
 }
 
 function updateHeaderStats(stats) {
-  document.getElementById('stat-strikes').textContent = stats.strikes.verified;
-  document.getElementById('stat-killed').textContent = formatNumber(stats.ocha_aggregates.reported_killed);
-  document.getElementById('stat-displaced').textContent = formatNumber(stats.displacement.ocha_estimate);
-  document.getElementById('stat-buildings').textContent = stats.infrastructure.buildings_destroyed;
+  const infra = stats.infrastructure;
+  document.getElementById('stat-killed').textContent = formatNumber(stats.casualties.reported_killed);
+  document.getElementById('stat-damaged-pct').textContent = infra.structures_damaged_percent + '%';
+  document.getElementById('stat-restricted').textContent = (stats.territorial_shrinkage?.idf_controlled_percent || 60) + '%';
+  document.getElementById('stat-displaced').textContent = formatNumber(stats.displacement.currently_in_displacement_sites);
 }
 
 function dateFromTimeline(value) {
@@ -84,7 +89,7 @@ function strikesToGeoJSON(strikes) {
   };
 }
 
-function initMap(buildings, hospitals, schools, camps, roads, strikes) {
+function initMap(buildings, hospitals, schools, camps, roads, rubble, damageZones, bufferZones, restrictedAreas, strikes) {
   map = new maplibregl.Map({
     container: 'map',
     style: {
@@ -114,7 +119,11 @@ function initMap(buildings, hospitals, schools, camps, roads, strikes) {
   map.addControl(new maplibregl.NavigationControl(), 'bottom-left');
 
   map.on('load', () => {
+    addRestrictedLayer(restrictedAreas);
+    addBufferLayer(bufferZones);
+    addDamageZoneLayer(damageZones);
     addBuildingLayer(buildings);
+    addRubbleLayer(rubble);
     addPointLayer('hospitals', hospitals, '#4ea8de', 'cross');
     addPointLayer('schools', schools, '#ffd166', 'school');
     addPointLayer('camps', camps, '#9b5de5', 'camp');
@@ -132,6 +141,126 @@ function initMap(buildings, hospitals, schools, camps, roads, strikes) {
   map.on('mouseleave', 'strikes-layer', () => map.getCanvas().style.cursor = '');
 }
 
+function addBufferLayer(zones) {
+  map.addSource('buffer-zones', { type: 'geojson', data: zones });
+  map.addLayer({
+    id: 'buffer-zones-fill',
+    type: 'fill',
+    source: 'buffer-zones',
+    paint: {
+      'fill-color': '#ffaa00',
+      'fill-opacity': 0.25,
+      'fill-outline-color': '#ff6600'
+    }
+  });
+  map.addLayer({
+    id: 'buffer-zones-labels',
+    type: 'symbol',
+    source: 'buffer-zones',
+    layout: {
+      'text-field': ['get', 'name'],
+      'text-size': 9,
+      'text-anchor': 'center'
+    },
+    paint: {
+      'text-color': '#ffaa00',
+      'text-halo-color': '#0a0e17',
+      'text-halo-width': 1.5
+    }
+  });
+}
+
+function addRestrictedLayer(areas) {
+  map.addSource('restricted-areas', { type: 'geojson', data: areas });
+  map.addLayer({
+    id: 'restricted-areas-fill',
+    type: 'fill',
+    source: 'restricted-areas',
+    paint: {
+      'fill-color': [
+        'interpolate', ['linear'], ['get', 'no_go_percent'],
+        40, '#ff8c42',
+        70, '#ff5533',
+        100, '#cc0000'
+      ],
+      'fill-opacity': 0.12
+    }
+  });
+  map.addLayer({
+    id: 'restricted-areas-labels',
+    type: 'symbol',
+    source: 'restricted-areas',
+    layout: {
+      'text-field': ['concat', ['get', 'governorate'], ': ', ['get', 'no_go_percent'], '% no-go'],
+      'text-size': 10,
+      'text-anchor': 'center'
+    },
+    paint: {
+      'text-color': '#ff6600',
+      'text-halo-color': '#0a0e17',
+      'text-halo-width': 2
+    }
+  });
+}
+
+function addDamageZoneLayer(zones) {
+  map.addSource('damage-zones', { type: 'geojson', data: zones });
+  map.addLayer({
+    id: 'damage-zones-fill',
+    type: 'fill',
+    source: 'damage-zones',
+    paint: {
+      'fill-color': [
+        'interpolate', ['linear'], ['get', 'damage_percent'],
+        70, '#ff8c42',
+        80, '#ff5533',
+        90, '#ff3b3b'
+      ],
+      'fill-opacity': 0.18
+    }
+  });
+  map.addLayer({
+    id: 'damage-zones-outline',
+    type: 'line',
+    source: 'damage-zones',
+    paint: {
+      'line-color': '#ff3b3b',
+      'line-width': 1.5,
+      'line-opacity': 0.4,
+      'line-dasharray': [4, 2]
+    }
+  });
+  map.addLayer({
+    id: 'damage-zones-labels',
+    type: 'symbol',
+    source: 'damage-zones',
+    layout: {
+      'text-field': ['concat', ['get', 'name'], '\n', ['get', 'damage_percent'], '% damaged'],
+      'text-size': 11,
+      'text-anchor': 'center'
+    },
+    paint: {
+      'text-color': '#ff3b3b',
+      'text-halo-color': '#0a0e17',
+      'text-halo-width': 2
+    }
+  });
+}
+
+function addRubbleLayer(rubble) {
+  map.addSource('rubble', { type: 'geojson', data: rubble });
+  map.addLayer({
+    id: 'rubble-layer',
+    type: 'fill',
+    source: 'rubble',
+    paint: {
+      'fill-color': '#8b4513',
+      'fill-opacity': 0.55,
+      'fill-outline-color': '#ff3b3b'
+    }
+  });
+}
+
 function addBuildingLayer(buildings) {
   map.addSource('buildings', { type: 'geojson', data: buildings });
 
@@ -143,13 +272,20 @@ function addBuildingLayer(buildings) {
       'fill-extrusion-color': [
         'match', ['get', 'status'],
         'destroyed', '#ff3b3b',
-        'damaged', '#ff8c42',
+        'severely_damaged', '#cc2200',
+        'moderately_damaged', '#ff8c42',
+        'damaged', '#ffd166',
         'intact', '#4a5568',
-        '#4a5568'
+        '#666666'
       ],
-      'fill-extrusion-height': ['*', ['get', 'floors'], 3.5],
+      'fill-extrusion-height': [
+        'case',
+        ['==', ['get', 'status'], 'destroyed'], 0.3,
+        ['==', ['get', 'status'], 'severely_damaged'], 1,
+        ['*', ['get', 'floors'], 3.5]
+      ],
       'fill-extrusion-base': 0,
-      'fill-extrusion-opacity': 0.85
+      'fill-extrusion-opacity': 0.9
     }
   });
 }
@@ -416,6 +552,10 @@ function setupControls() {
   const layerMap = {
     'layer-strikes': ['strikes-layer', 'strikes-glow'],
     'layer-buildings': ['buildings-3d'],
+    'layer-rubble': ['rubble-layer'],
+    'layer-damage-zones': ['damage-zones-fill', 'damage-zones-outline', 'damage-zones-labels'],
+    'layer-buffer': ['buffer-zones-fill', 'buffer-zones-labels'],
+    'layer-restricted': ['restricted-areas-fill', 'restricted-areas-labels'],
     'layer-hospitals': ['hospitals-layer', 'hospitals-labels'],
     'layer-schools': ['schools-layer', 'schools-labels'],
     'layer-camps': ['camps-layer', 'camps-labels'],
@@ -455,7 +595,7 @@ async function main() {
     statsData = data.stats;
 
     updateHeaderStats(data.stats);
-    initMap(data.buildings, data.hospitals, data.schools, data.camps, data.roads, data.strikes);
+    initMap(data.buildings, data.hospitals, data.schools, data.camps, data.roads, data.rubble, data.damageZones, data.bufferZones, data.restrictedAreas, data.strikes);
     setupControls();
 
     setTimeout(() => {

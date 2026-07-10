@@ -1,0 +1,52 @@
+{
+  "source": "OCHA oPt — Reported Impact Snapshot",
+  "date": "2026-02-04",
+  "url": "https://www.ochaopt.org/sites/default/files/Gaza_Reported_Impact_Snapshot_04_February_2026.pdf",
+  "casualties": {
+    "palestinians_killed": 71824,
+    "palestinians_injured": 171608,
+    "palestinians_killed_identified": 67173,
+    "israelis_killed_oct7": 1200,
+    "israelis_injured": 5400
+  },
+  "health": {
+    "emergency_medical_teams": 31,
+    "patients_needing_evacuation_abroad": 18500,
+    "children_needing_evacuation": 4000,
+    "health_facilities_not_functional": {
+      "hospitals": 114,
+      "by_governorate": {
+        "Gaza": 105,
+        "North Gaza": 46,
+        "Deir al-Balah": 22,
+        "Khan Yunis": 18,
+        "Rafah": 12
+      }
+    },
+    "field_hospitals": 12,
+    "primary_health_centres_partial": 32
+  },
+  "education": {
+    "children_without_formal_education": 637475,
+    "school_buildings_need_reconstruction": 526,
+    "school_buildings_total": 564,
+    "school_buildings_damaged_percent": 93,
+    "universities_destroyed": 63
+  },
+  "shelter": {
+    "people_needing_emergency_shelter": 1000000,
+    "housing_units_damaged": 320622
+  },
+  "food_security": {
+    "people_ipc_phase_3_or_above": 1600000,
+    "people_ipc_phase_3_or_above_percent": 77,
+    "governorates_analyzed": ["North Gaza", "Gaza", "Deir al-Balah", "Khan Yunis"],
+    "note": "Rafah excluded — largely depopulated"
+  },
+  "protection": {
+    "aid_workers_killed": 671,
+    "health_workers_killed": 1700,
+    "journalists_killed": 258,
+    "children_orphaned": 58000
+  }
+}

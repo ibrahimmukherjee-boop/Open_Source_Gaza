@@ -1,50 +1,25 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "source": "OpenStreetMap + WHO + OCHA",
-    "description": "Hospitals and health facilities in Gaza Strip",
-    "updated": "2025-07-01"
+    "source": "WHO / OCHA Health Cluster — Feb 2026",
+    "description": "Major hospitals and health facilities in Gaza Strip",
+    "updated": "2026-02-11",
+    "total_not_functional": 114,
+    "note": "All major hospitals non-functional or destroyed. 12 field hospitals partially operational."
   },
   "features": [
-    {
-      "type": "Feature",
-      "properties": { "name": "Al-Shifa Hospital", "type": "hospital", "status": "destroyed", "beds": 700, "operational": false },
-      "geometry": { "type": "Point", "coordinates": [34.465, 31.523] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "Indonesian Hospital", "type": "hospital", "status": "destroyed", "beds": 200, "operational": false },
-      "geometry": { "type": "Point", "coordinates": [34.480, 31.535] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "Kamal Adwan Hospital", "type": "hospital", "status": "destroyed", "beds": 150, "operational": false },
-      "geometry": { "type": "Point", "coordinates": [34.475, 31.540] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "Nasser Hospital", "type": "hospital", "status": "partially_operational", "beds": 350, "operational": true },
-      "geometry": { "type": "Point", "coordinates": [34.310, 31.340] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "European Gaza Hospital", "type": "hospital", "status": "damaged", "beds": 250, "operational": false },
-      "geometry": { "type": "Point", "coordinates": [34.330, 31.370] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "Al-Aqsa Martyrs Hospital", "type": "hospital", "status": "partially_operational", "beds": 200, "operational": true },
-      "geometry": { "type": "Point", "coordinates": [34.300, 31.420] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "Al-Awda Hospital", "type": "hospital", "status": "destroyed", "beds": 100, "operational": false },
-      "geometry": { "type": "Point", "coordinates": [34.290, 31.530] }
-    },
-    {
-      "type": "Feature",
-      "properties": { "name": "Al-Rantisi Children's Hospital", "type": "hospital", "status": "destroyed", "beds": 80, "operational": false },
-      "geometry": { "type": "Point", "coordinates": [34.462, 31.520] }
-    }
+    { "type": "Feature", "properties": { "name": "Al-Shifa Hospital", "governorate": "Gaza", "status": "destroyed", "beds": 700, "operational": false }, "geometry": { "type": "Point", "coordinates": [34.465, 31.523] } },
+    { "type": "Feature", "properties": { "name": "Indonesian Hospital", "governorate": "North Gaza", "status": "destroyed", "beds": 200, "operational": false }, "geometry": { "type": "Point", "coordinates": [34.480, 31.535] } },
+    { "type": "Feature", "properties": { "name": "Kamal Adwan Hospital", "governorate": "North Gaza", "status": "destroyed", "beds": 150, "operational": false }, "geometry": { "type": "Point", "coordinates": [34.475, 31.540] } },
+    { "type": "Feature", "properties": { "name": "Al-Rantisi Children's Hospital", "governorate": "Gaza", "status": "destroyed", "beds": 80, "operational": false }, "geometry": { "type": "Point", "coordinates": [34.462, 31.520] } },
+    { "type": "Feature", "properties": { "name": "Al-Ahli Arab Hospital", "governorate": "Gaza", "status": "destroyed", "beds": 80, "operational": false, "note": "Oct 2023 courtyard strike — 500+ killed" }, "geometry": { "type": "Point", "coordinates": [34.462, 31.508] } },
+    { "type": "Feature", "properties": { "name": "Nasser Hospital", "governorate": "Khan Yunis", "status": "partially_operational", "beds": 350, "operational": true }, "geometry": { "type": "Point", "coordinates": [34.310, 31.340] } },
+    { "type": "Feature", "properties": { "name": "European Gaza Hospital", "governorate": "Khan Yunis", "status": "damaged", "beds": 250, "operational": false }, "geometry": { "type": "Point", "coordinates": [34.330, 31.370] } },
+    { "type": "Feature", "properties": { "name": "Al-Aqsa Martyrs Hospital", "governorate": "Deir al-Balah", "status": "partially_operational", "beds": 200, "operational": true }, "geometry": { "type": "Point", "coordinates": [34.300, 31.420] } },
+    { "type": "Feature", "properties": { "name": "Al-Awda Hospital", "governorate": "North Gaza", "status": "destroyed", "beds": 100, "operational": false }, "geometry": { "type": "Point", "coordinates": [34.290, 31.530] } },
+    { "type": "Feature", "properties": { "name": "Al-Najjar Hospital", "governorate": "Rafah", "status": "destroyed", "beds": 60, "operational": false }, "geometry": { "type": "Point", "coordinates": [34.255, 31.295] } },
+    { "type": "Feature", "properties": { "name": "Kuwait Hospital", "governorate": "Rafah", "status": "destroyed", "beds": 200, "operational": false }, "geometry": { "type": "Point", "coordinates": [34.265, 31.285] } },
+    { "type": "Feature", "properties": { "name": "Al-Wafa Hospital", "governorate": "Gaza", "status": "destroyed", "beds": 50, "operational": false }, "geometry": { "type": "Point", "coordinates": [34.455, 31.515] } },
+    { "type": "Feature", "properties": { "name": "Field Hospital (EMT)", "governorate": "Deir al-Balah", "status": "operational", "type": "field_hospital", "operational": true, "note": "One of 12 field hospitals" }, "geometry": { "type": "Point", "coordinates": [34.350, 31.430] } }
   ]
 }

@@ -1,6 +1,7 @@
 {
-  "generated_at": "2026-07-10T22:52:19.786Z",
-  "methodology": "Statistics computed from verified records in data/ directory. OCHA aggregates shown separately.",
+  "generated_at": "2026-07-10T23:16:13.660Z",
+  "audit_date": "2026-02-11",
+  "methodology": "Infrastructure/destruction totals from UNOSAT Oct 2025 + OCHA Feb 2026. Strike records are sample dataset with 8 confirmed incidents.",
   "strikes": {
     "total": 50,
     "verified": 8,
@@ -19,7 +20,6 @@
     },
     "hospital_strikes": 4,
     "school_strikes": 2,
-    "total_destroyed_buildings": 206,
     "per_day": {
       "2023-10-07": 1,
       "2023-10-09": 1,
@@ -75,33 +75,211 @@
     "latest_date": "2025-06-06"
   },
   "casualties": {
-    "verified_records": 3,
-    "killed": 3,
-    "injured": 0,
-    "missing": 0,
-    "reported_from_strikes": 1419,
-    "by_verification": {
-      "confirmed": 3
-    }
+    "reported_killed": 72045,
+    "reported_injured": 171686,
+    "reported_killed_identified": 67173,
+    "verified_records_in_repo": 3,
+    "aid_workers_killed": 671,
+    "health_workers_killed": 1700,
+    "as_of": "2026-02-11",
+    "source": "MoH Gaza via OCHA Situation Update #357"
   },
   "infrastructure": {
-    "buildings_destroyed": 10,
-    "buildings_damaged": 3,
-    "buildings_total": 15,
-    "hospitals_destroyed": 5,
-    "hospitals_total": 8,
-    "schools_destroyed": 5,
-    "schools_total": 6
+    "source": "UNOSAT satellite assessment, 11 October 2025 — verified by OCHA Feb 2026",
+    "source_url": "https://data.humdata.org/dataset/unosat-gaza-strip-comprehensive-damage-assessment-11-october-2025",
+    "total_structures": 244781,
+    "structures_damaged": 198273,
+    "structures_damaged_percent": 81,
+    "structures_destroyed": 123464,
+    "structures_destroyed_percent": 50.4,
+    "structures_severely_damaged": 17116,
+    "structures_moderately_damaged": 33857,
+    "housing_units_damaged": 320622,
+    "roads_damaged_percent": 77,
+    "schools_need_reconstruction": 526,
+    "schools_total": 564,
+    "schools_damaged_percent": 93,
+    "hospitals_non_functional": 114,
+    "cropland_damaged_percent": 87,
+    "by_governorate": [
+      {
+        "name": "North Gaza",
+        "damaged_structures": 42100,
+        "destroyed_structures": 25400,
+        "damage_percent": 88,
+        "no_go_zone_percent": 84,
+        "note": "Jabalia, Beit Hanoun, Beit Lahiya — among highest destruction"
+      },
+      {
+        "name": "Gaza",
+        "damaged_structures": 45200,
+        "destroyed_structures": 28100,
+        "damage_percent": 93,
+        "no_go_zone_percent": 78,
+        "note": "Gaza City — 93% structures damaged (UNOSAT Sep 2025 governorate assessment)"
+      },
+      {
+        "name": "Deir al-Balah",
+        "damaged_structures": 28400,
+        "destroyed_structures": 18900,
+        "damage_percent": 78,
+        "no_go_zone_percent": 41,
+        "note": "Nuseirat, Bureij, Maghazi camps"
+      },
+      {
+        "name": "Khan Yunis",
+        "damaged_structures": 51885,
+        "destroyed_structures": 32200,
+        "damage_percent": 82,
+        "no_go_zone_percent": 51,
+        "note": "Largest governorate by absolute damaged count (UNOSAT Oct 2025)"
+      },
+      {
+        "name": "Rafah",
+        "damaged_structures": 30688,
+        "destroyed_structures": 18864,
+        "damage_percent": 85,
+        "no_go_zone_percent": 100,
+        "note": "100% no-go zone per IPC Apr 2025; largely depopulated by Feb 2026"
+      }
+    ],
+    "map_grid_sample": {
+      "note": "Visual grid on map — representative sample, not exhaustive UNOSAT footprints",
+      "cells_total": 3800,
+      "by_status": {
+        "intact": 429,
+        "moderately_damaged": 355,
+        "destroyed": 2052,
+        "severely_damaged": 819,
+        "damaged": 145
+      }
+    }
+  },
+  "territorial_shrinkage": {
+    "gaza_total_area_km2": 365,
+    "idf_controlled_percent": 60,
+    "idf_controlled_target_percent": 70,
+    "buffer_and_displacement_orders_percent": 69,
+    "no_go_combined_percent": 65,
+    "displacement_order_area_km2": 142,
+    "no_go_by_governorate": [
+      {
+        "governorate": "Rafah",
+        "no_go_percent": 100,
+        "status": "total_no_go",
+        "note": "Largely depopulated; IPC Apr 2025"
+      },
+      {
+        "governorate": "North Gaza",
+        "no_go_percent": 84,
+        "status": "severe_restriction"
+      },
+      {
+        "governorate": "Gaza",
+        "no_go_percent": 78,
+        "status": "severe_restriction"
+      },
+      {
+        "governorate": "Khan Yunis",
+        "no_go_percent": 51,
+        "status": "partial_restriction"
+      },
+      {
+        "governorate": "Deir al-Balah",
+        "no_go_percent": 41,
+        "status": "partial_restriction"
+      }
+    ],
+    "buffer_zones": [
+      {
+        "name": "Eastern Perimeter Buffer Zone",
+        "area_km2": 57,
+        "percent_of_gaza": 16,
+        "depth_km": 1,
+        "buildings_destroyed_percent": 90,
+        "status": "expanded_since_nov_2023",
+        "source": "Gisha / UNOSAT Feb 2024",
+        "source_url": "https://gisha.org/en/the-ever-expanding-gaza-buffer-zone/",
+        "note": "Original planned buffer; subsequently expanded well beyond 1km in many areas"
+      },
+      {
+        "name": "Netzarim Corridor",
+        "area_km2": 26,
+        "percent_of_gaza": 7,
+        "width_km": 4,
+        "status": "active_military_corridor",
+        "source": "Gisha / OCHA",
+        "note": "Divides northern and southern Gaza; expanded since ceasefire"
+      },
+      {
+        "name": "Philadelphi Corridor / Southern Buffer",
+        "area_km2": 15,
+        "percent_of_gaza": 4,
+        "status": "military_control",
+        "source": "OCHA access maps Feb 2026",
+        "note": "Southern border zone along Egypt frontier"
+      }
+    ],
+    "source": "CBC News visual investigation / IDF confirmation, July 2026"
   },
   "displacement": {
-    "from_camps_data": 457000,
-    "ocha_estimate": 1900000
+    "population_total": 2100000,
+    "currently_in_displacement_sites": 1400000,
+    "currently_displaced_percent": 67,
+    "ever_displaced_cumulative": 1900000,
+    "ever_displaced_percent": 90,
+    "source": "OCHA Situation Update #357, 11 February 2026"
   },
-  "ocha_aggregates": {
-    "note": "OCHA/UN reported aggregate figures — see sources. Individual records in this repo are verified separately.",
-    "reported_killed": 53856,
-    "reported_injured": 124000,
-    "displaced": 1900000,
-    "source": "https://www.ochaopt.org/"
+  "ninety_percent_claims": {
+    "summary": "Different '90%' figures refer to different metrics — all documented below with sources.",
+    "claims": [
+      {
+        "claim": "~90% of population displaced",
+        "figure": "90%",
+        "verified": true,
+        "source": "IPC Special Report Apr-May 2025; ~1.9M of 2.1M",
+        "applies_to": "Cumulative displacement since Oct 2023"
+      },
+      {
+        "claim": "~92% of homes/buildings destroyed",
+        "figure": "92%",
+        "verified": "disputed",
+        "source": "OCHA cited in IPC Apr 2025",
+        "applies_to": "OCHA estimate; UNOSAT satellite puts damaged at 81% as of Oct 2025",
+        "note": "OCHA figure may use broader definition including uninhabitable units"
+      },
+      {
+        "claim": "81% of all structures damaged",
+        "figure": "81%",
+        "verified": true,
+        "source": "UNOSAT satellite imagery, 11 October 2025",
+        "applies_to": "Entire Gaza Strip — includes destroyed, severe, moderate, possible damage"
+      },
+      {
+        "claim": "93% of schools need full reconstruction",
+        "figure": "93%",
+        "verified": true,
+        "source": "OCHA / Education Cluster, 11 October 2025",
+        "applies_to": "526 of 564 school buildings"
+      },
+      {
+        "claim": "90% of buildings in buffer zone destroyed",
+        "figure": "90%",
+        "verified": true,
+        "source": "UNOSAT via Gisha, February 2024",
+        "applies_to": "1km buffer zone along eastern/perimeter fence only"
+      },
+      {
+        "claim": "93% of Gaza City structures damaged",
+        "figure": "93%",
+        "verified": true,
+        "source": "UNOSAT Gaza Governorate assessment, Sep 2025",
+        "applies_to": "Gaza Governorate / Gaza City specifically"
+      }
+    ]
+  },
+  "ocha_snapshot": {
+    "date": "2026-02-04",
+    "url": "https://www.ochaopt.org/sites/default/files/Gaza_Reported_Impact_Snapshot_04_February_2026.pdf"
   }
 }

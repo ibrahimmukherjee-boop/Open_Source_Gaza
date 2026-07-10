@@ -1,0 +1,37 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "IPC Apr-May 2025 / OCHA",
+    "description": "No-go zones and displacement order areas by governorate",
+    "updated": "2026-02-11",
+    "territory_inaccessible_percent": 69,
+    "note": "69% of Gaza within buffer zone OR under displacement orders (OCHA Apr 2025). 65-70% no-go/displacement combined."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "governorate": "Rafah", "no_go_percent": 100, "status": "total_no_go", "habitable": false },
+      "geometry": { "type": "Polygon", "coordinates": [[[34.22, 31.24], [34.32, 31.24], [34.32, 31.32], [34.22, 31.32], [34.22, 31.24]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "governorate": "North Gaza", "no_go_percent": 84, "status": "severe_restriction" },
+      "geometry": { "type": "Polygon", "coordinates": [[[34.46, 31.48], [34.56, 31.48], [34.56, 31.58], [34.46, 31.58], [34.46, 31.48]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "governorate": "Gaza", "no_go_percent": 78, "status": "severe_restriction" },
+      "geometry": { "type": "Polygon", "coordinates": [[[34.38, 31.48], [34.46, 31.48], [34.46, 31.54], [34.38, 31.54], [34.38, 31.48]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "governorate": "Khan Yunis", "no_go_percent": 51, "status": "partial_restriction" },
+      "geometry": { "type": "Polygon", "coordinates": [[[34.26, 31.30], [34.36, 31.30], [34.36, 31.40], [34.26, 31.40], [34.26, 31.30]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "governorate": "Deir al-Balah", "no_go_percent": 41, "status": "partial_restriction" },
+      "geometry": { "type": "Polygon", "coordinates": [[[34.32, 31.38], [34.42, 31.38], [34.42, 31.48], [34.32, 31.48], [34.32, 31.38]]] }
+    }
+  ]
+}

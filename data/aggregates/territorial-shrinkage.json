@@ -1,0 +1,73 @@
+{
+  "source": "OCHA, IPC, Gisha, CBC Visual Investigation, Forensic Architecture",
+  "gaza_strip_total_area_km2": 365,
+  "pre_conflict_population": 2100000,
+  "as_of": "2026-02-11",
+  "territorial_shrinkage": {
+    "summary": "Palestinians are concentrated on less than half of Gaza's land. IDF controls ~60% of territory as of mid-2026, with plans to expand to 70%.",
+    "idf_controlled_percent": 60,
+    "idf_controlled_target_percent": 70,
+    "idf_controlled_source": "CBC News visual investigation / IDF confirmation, July 2026",
+    "idf_controlled_url": "https://www.cbc.ca/news/investigates/satellite-images-gaza-yellow-line-9.7257822",
+    "population_on_less_than_half_land": true,
+    "population_concentration_note": "2.1M Palestinians concentrated on <50% of territory per Forensic Architecture / OCHA"
+  },
+  "buffer_zones": [
+    {
+      "name": "Eastern Perimeter Buffer Zone",
+      "area_km2": 57,
+      "percent_of_gaza": 16,
+      "depth_km": 1,
+      "buildings_destroyed_percent": 90,
+      "status": "expanded_since_nov_2023",
+      "source": "Gisha / UNOSAT Feb 2024",
+      "source_url": "https://gisha.org/en/the-ever-expanding-gaza-buffer-zone/",
+      "note": "Original planned buffer; subsequently expanded well beyond 1km in many areas"
+    },
+    {
+      "name": "Netzarim Corridor",
+      "area_km2": 26,
+      "percent_of_gaza": 7,
+      "width_km": 4,
+      "status": "active_military_corridor",
+      "source": "Gisha / OCHA",
+      "note": "Divides northern and southern Gaza; expanded since ceasefire"
+    },
+    {
+      "name": "Philadelphi Corridor / Southern Buffer",
+      "area_km2": 15,
+      "percent_of_gaza": 4,
+      "status": "military_control",
+      "source": "OCHA access maps Feb 2026",
+      "note": "Southern border zone along Egypt frontier"
+    }
+  ],
+  "restricted_access": {
+    "buffer_and_displacement_orders_percent": 69,
+    "no_go_and_displacement_combined_percent": 65,
+    "no_go_and_displacement_high_estimate_percent": 70,
+    "displacement_order_area_km2": 142,
+    "displacement_order_area_percent": 39,
+    "source": "IPC Special Report Apr-May 2025 / OCHA",
+    "source_url": "https://www.ipcinfo.org/fileadmin/user_upload/ipcinfo/docs/IPC_Gaza_Strip_Acute_Food_Insecurity_Apr_Sep2025_Special_Report.pdf"
+  },
+  "no_go_zones_by_governorate": [
+    { "governorate": "Rafah", "no_go_percent": 100, "status": "total_no_go", "note": "Largely depopulated; IPC Apr 2025" },
+    { "governorate": "North Gaza", "no_go_percent": 84, "status": "severe_restriction" },
+    { "governorate": "Gaza", "no_go_percent": 78, "status": "severe_restriction" },
+    { "governorate": "Khan Yunis", "no_go_percent": 51, "status": "partial_restriction" },
+    { "governorate": "Deir al-Balah", "no_go_percent": 41, "status": "partial_restriction" }
+  ],
+  "yellow_line": {
+    "description": "Demarcation of IDF-controlled areas marked by concrete blocks; shifted significantly since Oct 2025 ceasefire",
+    "expansion_since_ceasefire": true,
+    "kill_zone_allegations": "Documented by Forensic Architecture and CBC investigation",
+    "source": "CBC News visual investigation, July 2026"
+  },
+  "access_restrictions": {
+    "crossings_open_for_people": ["Rafah (limited medical evacuations)", "Erez West (returnees/patients Feb 2026)"],
+    "crossings_open_for_aid": ["Kerem Shalom (limited cargo)"],
+    "crossings_closed": ["Erez", "Karni", "Sufa", "Nahal Oz"],
+    "source": "OCHA Impact Snapshot, 4 February 2026"
+  }
+}

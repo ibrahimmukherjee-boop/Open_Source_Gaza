@@ -1,0 +1,85 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "Gisha / OCHA / CBC visual investigation",
+    "description": "Military buffer zones and corridors reducing habitable Gaza territory",
+    "updated": "2026-02-11",
+    "total_area_lost_km2": 98,
+    "percent_of_gaza": 27,
+    "note": "Conservative estimate of declared buffer+corridor zones. IDF actual control ~60% per CBC Jul 2026."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Eastern Perimeter Buffer Zone",
+        "type": "buffer_zone",
+        "depth_km": 1,
+        "area_km2": 57,
+        "buildings_destroyed_percent": 90,
+        "status": "idf_controlled",
+        "source": "Gisha / UNOSAT Feb 2024"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [34.540, 31.22], [34.560, 31.22], [34.560, 31.58],
+          [34.540, 31.58], [34.540, 31.22]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Netzarim Corridor",
+        "type": "military_corridor",
+        "width_km": 4,
+        "area_km2": 26,
+        "status": "idf_controlled",
+        "source": "Gisha / OCHA",
+        "note": "Divides northern and southern Gaza"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [34.430, 31.38], [34.460, 31.38], [34.460, 31.55],
+          [34.430, 31.55], [34.430, 31.38]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Philadelphi Corridor",
+        "type": "buffer_zone",
+        "area_km2": 15,
+        "status": "idf_controlled",
+        "source": "OCHA access maps Feb 2026"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [34.220, 31.24], [34.250, 31.24], [34.250, 31.32],
+          [34.220, 31.32], [34.220, 31.24]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yellow Line — Northern Expansion",
+        "type": "idf_controlled",
+        "status": "expanded_post_ceasefire",
+        "source": "CBC visual investigation Jul 2026",
+        "note": "IDF-controlled area expanded beyond Oct 2025 ceasefire line"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [34.460, 31.50], [34.540, 31.50], [34.540, 31.58],
+          [34.460, 31.58], [34.460, 31.50]
+        ]]
+      }
+    }
+  ]
+}
