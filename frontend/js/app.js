@@ -658,35 +658,40 @@ function updateTimeline(value) {
 
 function setupControls() {
   const slider = document.getElementById('timeline-slider');
-  slider.addEventListener('input', (e) => updateTimeline(Number(e.target.value)));
+  if (slider) {
+    slider.addEventListener('input', (e) => updateTimeline(Number(e.target.value)));
+  }
 
-  document.getElementById('btn-play').addEventListener('click', () => {
-    if (isPlaying) {
-      clearInterval(playInterval);
-      isPlaying = false;
-      document.getElementById('btn-play').textContent = '▶';
-    } else {
-      isPlaying = true;
-      document.getElementById('btn-play').textContent = '⏸';
-      slider.value = 0;
-      playInterval = setInterval(() => {
-        let v = Number(slider.value) + 0.5;
-        if (v >= 100) {
-          clearInterval(playInterval);
-          isPlaying = false;
-          document.getElementById('btn-play').textContent = '▶';
-          v = 100;
-        }
-        slider.value = v;
-        updateTimeline(v);
-      }, 80);
-    }
-  });
+  const btnPlay = document.getElementById('btn-play');
+  if (btnPlay) {
+    btnPlay.addEventListener('click', () => {
+      if (isPlaying) {
+        clearInterval(playInterval);
+        isPlaying = false;
+        btnPlay.textContent = '▶';
+      } else {
+        isPlaying = true;
+        btnPlay.textContent = '⏸';
+        if (slider) slider.value = 0;
+        playInterval = setInterval(() => {
+          let v = Number(slider?.value || 0) + 0.5;
+          if (v >= 100) {
+            clearInterval(playInterval);
+            isPlaying = false;
+            btnPlay.textContent = '▶';
+            v = 100;
+          }
+          if (slider) slider.value = v;
+          updateTimeline(v);
+        }, 80);
+      }
+    });
+  }
 
-  document.getElementById('btn-fit').addEventListener('click', () => fitFullGaza(true));
+  document.getElementById('btn-fit')?.addEventListener('click', () => fitFullGaza(true));
 
-  document.getElementById('btn-reset').addEventListener('click', () => {
-    slider.value = 100;
+  document.getElementById('btn-reset')?.addEventListener('click', () => {
+    if (slider) slider.value = 100;
     updateTimeline(100);
     fitFullGaza(true);
   });
@@ -705,7 +710,9 @@ function setupControls() {
   };
 
   Object.entries(layerMap).forEach(([checkboxId, layers]) => {
-    document.getElementById(checkboxId).addEventListener('change', (e) => {
+    const checkbox = document.getElementById(checkboxId);
+    if (!checkbox) return;
+    checkbox.addEventListener('change', (e) => {
       const vis = e.target.checked ? 'visible' : 'none';
       layers.forEach(id => {
         if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', vis);
@@ -713,7 +720,7 @@ function setupControls() {
     });
   });
 
-  document.getElementById('layer-3d').addEventListener('change', (e) => {
+  document.getElementById('layer-3d')?.addEventListener('change', (e) => {
     const pitch = e.target.checked ? 55 : 0;
     map.easeTo({ pitch, duration: 800 });
     document.getElementById('three-overlay').style.display = e.target.checked ? 'block' : 'none';
@@ -751,8 +758,11 @@ async function main() {
     }, 8000);
   } catch (err) {
     console.error('Failed to load:', err);
-    document.querySelector('.loader-content p').textContent = 'Error loading data. Check console.';
-    document.getElementById('loading-screen').classList.add('hidden');
+    const loaderText = document.querySelector('.loader-content p');
+    if (loaderText) {
+      loaderText.textContent = `Error loading data: ${err.message}`;
+    }
+    document.getElementById('loading-screen')?.classList.add('hidden');
   }
 }
 
